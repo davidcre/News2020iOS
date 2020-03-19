@@ -35,17 +35,13 @@ extension ThematiqueController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ThematiqueCellIdentifier", for: indexPath) as? ThematiqueCell {
-            cell.thematique.text = self.thematique[indexPath.row]
+            cell.configure(text: self.thematique[indexPath.row])
             return cell
         }
         return UITableViewCell()
     }
-    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "segueToNews", sender: indexPath)
     }
-}
-
-class ThematiqueCell: UITableViewCell {
-    @IBOutlet weak var thematique: UILabel!
-    @IBOutlet weak var imageThematique: UIImageView!
 }
