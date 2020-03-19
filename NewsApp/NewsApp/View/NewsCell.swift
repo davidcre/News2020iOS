@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// TODO: Cette classse servira à afficher les news 
 class NewsCell: UITableViewCell {
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var publishedAt: UILabel!
