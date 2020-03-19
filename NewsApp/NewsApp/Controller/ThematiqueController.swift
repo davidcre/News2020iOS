@@ -11,7 +11,6 @@ import UIKit
 class ThematiqueController: UITableViewController {
 
     private var thematique: [String] = ["Économie", "Divertissement", "Santé", "Sports", "Sciences", "Technologie"]
-    private var thematiqueAnglais: [String] = ["business", "entertainment", "health", "sports", "science", "technology"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,6 @@ class ThematiqueController: UITableViewController {
                 return
             }
             newsController.title = thematique[indexPath.row]
-            newsController.urlRequest = URLRequest(category: thematiqueAnglais[indexPath.row])
         }
     }
 }
