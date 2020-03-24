@@ -63,7 +63,6 @@ public class APIClient {
         components.queryItems = customQueryItems
 
         // Construct the final URL with all the previous data
-        print(components.url!)
         return components.url!
     }
 }

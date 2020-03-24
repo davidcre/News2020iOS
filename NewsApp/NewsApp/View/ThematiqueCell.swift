@@ -8,8 +8,8 @@
 import UIKit
 
 class ThematiqueCell: UITableViewCell {
-    @IBOutlet weak var thematique: UILabel!
-    @IBOutlet weak var imageThematique: UIImageView!
+    @IBOutlet private weak var thematique: UILabel!
+    @IBOutlet private weak var imageThematique: UIImageView!
 
     func configure(text: String) {
         self.thematique.text = text

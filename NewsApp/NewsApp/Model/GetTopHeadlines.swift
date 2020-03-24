@@ -15,7 +15,6 @@ public struct GetTopHeadlines: APIRequest {
         return "top-headlines"
     }
 
-    // Parameters
     public let country: String?
     public let category: String?
     public let query: String?
