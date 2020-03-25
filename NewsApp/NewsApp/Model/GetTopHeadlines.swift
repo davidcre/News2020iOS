@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct GetTopHeadlines: APIRequest {
-    public typealias Response = ArticleContainer
+struct GetTopHeadlines: APIRequest {
+    typealias Response = ArticleContainer
 
-    public var resourceName: String {
+    var resourceName: String {
         return "top-headlines"
     }
 

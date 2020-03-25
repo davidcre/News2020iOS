@@ -23,7 +23,7 @@ class NewsController: UITableViewController {
                 }
             case .failure(let error):
                 debugPrint(error.localizedDescription)
-            }                        
+            }
         }
     }
 }

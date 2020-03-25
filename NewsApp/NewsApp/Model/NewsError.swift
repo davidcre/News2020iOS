@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum NewsError: Error {
+enum NewsError: Error {
     case encoding
     case decoding
     case server(message: String)

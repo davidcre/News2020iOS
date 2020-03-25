@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol APIRequest: Encodable {
+protocol APIRequest: Encodable {
 
     associatedtype Response: Decodable
 

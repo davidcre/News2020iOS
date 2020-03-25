@@ -8,23 +8,7 @@
 
 import Foundation
 
-//public struct Article: Codable {
-//    let author: String?
-//    let title: String?
-//    let description: String?
-//    let url: String?
-//    let urlToImage: String?
-//    let publishedAt: String?
-//    let content: String?
-//}
-
-public struct ArticleContainer: Codable {
-    let status: String?
-    let totalResults: Int?
-    let articles: [Article]?
-}
-
-public struct Article: Codable {
+struct Article: Codable {
     let source: Source?
     let author: String?
     let title: String?
@@ -45,15 +29,11 @@ public struct Article: Codable {
 }
 
 struct Source: Codable {
-    let id: String?
+    let identifiant: String?
     let name: String?
-}
 
-fileprivate extension String {
-    var formattedDate: Date? {
-        // 2020-03-25T07:39:13Z
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
-        return dateFormatter.date(from: self)
+    enum CodingKeys: String, CodingKey {
+        case identifiant = "id"
+        case name
     }
 }
