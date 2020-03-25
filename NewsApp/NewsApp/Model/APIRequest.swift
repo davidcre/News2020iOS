@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol APIRequest: Encodable {
-    
+
     associatedtype Response: Decodable
 
     /// Endpoint for this request (the last part of the URL)

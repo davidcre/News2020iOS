@@ -11,28 +11,46 @@ import Foundation
 public class APIClient {
     private let baseEndpointUrl = URL(string: "http://newsapi.org/v2/")!
     private let session = URLSession(configuration: .default)
-    public var newsArticles: [Article] = []
+    //public var newsArticles: [Article] = []
 
-    public func send<T: APIRequest>(_ request: T, completion: @escaping (Result<[Article], Error>) -> Void) {
+//    public func send<T: APIRequest>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void) {
+//        let endpoint = self.endpoint(for: request)
+//        let task = session.dataTask(with: URLRequest(url: endpoint)) { data, _, error in
+//            if let data = data {
+//                do {
+//                    // Decode the top level response, and look up the decoded response to see
+//                    // if it's a success or a failure
+//                    let newsResponse = try JSONDecoder().decode(NewsResponse<T.Response>.self, from: data)
+//                    if newsResponse.status == "error" {
+//                        completion(.failure(NewsError.server(message: newsResponse.code ?? newsResponse.error ?? "Erreur dans votre requête")))
+//                    } else if newsResponse.status == "ok" {
+//                        guard let articles = newsResponse.articles else {
+//                            return
+//                        }
+//                        completion(.success(articles))
+//                    } else {
+//                        fatalError()
+//                    }
+//                } catch {
+//                    completion(.failure(error))
+//                }
+//            } else if let error = error {
+//                completion(.failure(error))
+//            }
+//        }
+//        task.resume()
+//    }
+
+    public func send<T: APIRequest>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void) {
         let endpoint = self.endpoint(for: request)
-
         let task = session.dataTask(with: URLRequest(url: endpoint)) { data, _, error in
             if let data = data {
                 do {
                     // Decode the top level response, and look up the decoded response to see
                     // if it's a success or a failure
-                    let newsResponse = try JSONDecoder().decode(NewsResponse<T.Response>.self, from: data)
-                    if newsResponse.status == "error" {
-                        completion(.failure(NewsError.server(message: newsResponse.code ?? newsResponse.error ?? "Erreur dans votre requête")))
-                    } else if newsResponse.status == "ok" {
-                        guard let articles = newsResponse.articles else {
-                            return
-                        }
-                        self.newsArticles = articles
-                        completion(.success(articles))
-                    } else {
-                        fatalError()
-                    }
+                    let newsResponse = try JSONDecoder().decode(T.Response.self, from: data)
+                    print(newsResponse)
+                    completion(.success(newsResponse))
                 } catch {
                     completion(.failure(error))
                 }

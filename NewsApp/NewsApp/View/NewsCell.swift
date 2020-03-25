@@ -17,12 +17,12 @@ class NewsCell: UITableViewCell {
 
     func configure(
          author: String? = "",
-         publishedAt: String? = "",
+         publishedAt: Date? = DateFormatter().date(from: ""),
          title: String? = "",
          content: String? = "",
          imageArticle: String? = "") {
         self.author.text = author
-        self.publishedAt.text = publishedAt
+        self.publishedAt.text = DateFormatter().string(from: publishedAt!)
         self.title.text = title
         self.content.text = content
         if imageArticle != nil {

@@ -15,14 +15,15 @@ public struct GetTopHeadlines: APIRequest {
         return "top-headlines"
     }
 
-    public let country: String?
-    public let category: String?
-    public let query: String?
-    public let apiKey = "2c64fe5d063645f58a5cd563308d0e7c"
+    private let country: Country?
+    private let category: Category?
+    private let query: String?
+    private let apiKey = "2c64fe5d063645f58a5cd563308d0e7c"
 
-    public init(country: String? = "fr",
-                category: String? = "",
-                query: String? = "") {
+    init(
+        country: Country? = Country.fr,
+        category: Category? = Category.general,
+        query: String? = "") {
         self.country = country
         self.category = category
         self.query = query

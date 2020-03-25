@@ -9,12 +9,16 @@
 import UIKit
 
 class NewsController: UITableViewController {
-    let apiClient = APIClient()
+    private let apiClient = APIClient()
+    private var newsArticles: [Article] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.send(GetTopHeadlines()) { _ in
+        apiClient.send(GetTopHeadlines()) { [weak self] response in
+            response.map { newsArticles in
+                self?.newsArticles = newsArticles
+            }
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -22,16 +26,17 @@ class NewsController: UITableViewController {
 
 extension NewsController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.apiClient.newsArticles.count
+        return self.newsArticles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCellIdentifier", for: indexPath) as? NewsCell {
-            cell.configure(author: self.apiClient.newsArticles[indexPath.row].author,
-                           publishedAt: self.apiClient.newsArticles[indexPath.row].publishedAt,
-                           title: self.apiClient.newsArticles[indexPath.row].title,
-                           content: self.apiClient.newsArticles[indexPath.row].content,
-                           imageArticle: self.apiClient.newsArticles[indexPath.row].urlToImage)
+            let articleAtIndexPath = self.newsArticles[indexPath.row]
+            cell.configure(author: articleAtIndexPath.author,
+                           publishedAt: articleAtIndexPath.publishedAt,
+                           title: articleAtIndexPath.title,
+                           content: articleAtIndexPath.content,
+                           imageArticle: articleAtIndexPath.urlToImage)
             return cell
         }
         return UITableViewCell()

@@ -8,12 +8,34 @@
 
 import Foundation
 
-public struct Article: Decodable {
-    public let author: String?
-    public let title: String?
-    public let description: String?
-    public let url: String?
-    public let urlToImage: String?
-    public let publishedAt: String?
-    public let content: String?
+//public struct Article: Codable {
+//    let author: String?
+//    let title: String?
+//    let description: String?
+//    let url: String?
+//    let urlToImage: String?
+//    let publishedAt: String?
+//    let content: String?
+//}
+
+public struct Article: Codable {
+    let source: Source
+    let author: String?
+    let title: String
+    let articleDescription: String?
+    let url: String
+    let urlToImage: String?
+    let publishedAt: Date
+    let content: String?
+
+    enum CodingKeys: String, CodingKey {
+        case source, author, title
+        case articleDescription
+        case url, urlToImage, publishedAt, content
+    }
+}
+
+struct Source: Codable {
+    let id: String?
+    let name: String
 }

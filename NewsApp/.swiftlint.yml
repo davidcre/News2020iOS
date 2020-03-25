@@ -3,4 +3,5 @@ line_length:
     warning: 180
 excluded:
     - Pods
+    - NewsApp/Model/Country.swift
 
