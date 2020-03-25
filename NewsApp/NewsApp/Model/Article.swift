@@ -18,14 +18,23 @@ import Foundation
 //    let content: String?
 //}
 
+public struct ArticleContainer: Codable {
+    let status: String?
+    let totalResults: Int?
+    let articles: [Article]?
+}
+
 public struct Article: Codable {
-    let source: Source
+    let source: Source?
     let author: String?
-    let title: String
+    let title: String?
     let articleDescription: String?
-    let url: String
-    let urlToImage: String?
-    let publishedAt: Date
+    let url: URL?
+    let urlToImage: URL?
+    private let publishedAt: String?
+    var publishedAtDate: Date? {
+        return publishedAt?.formattedDate
+    }
     let content: String?
 
     enum CodingKeys: String, CodingKey {
@@ -37,5 +46,14 @@ public struct Article: Codable {
 
 struct Source: Codable {
     let id: String?
-    let name: String
+    let name: String?
+}
+
+fileprivate extension String {
+    var formattedDate: Date? {
+        // 2020-03-25T07:39:13Z
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
+        return dateFormatter.date(from: self)
+    }
 }

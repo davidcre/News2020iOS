@@ -15,18 +15,36 @@ class NewsCell: UITableViewCell {
     @IBOutlet private weak var content: UILabel!
     @IBOutlet private weak var imageArticle: UIImageView!
 
-    func configure(
-         author: String? = "",
-         publishedAt: Date? = DateFormatter().date(from: ""),
-         title: String? = "",
-         content: String? = "",
-         imageArticle: String? = "") {
-        self.author.text = author
-        self.publishedAt.text = DateFormatter().string(from: publishedAt!)
-        self.title.text = title
-        self.content.text = content
-        if imageArticle != nil {
-            self.imageArticle.load(url: URL(string: imageArticle!)!)
+    var viewModel: NewsCell.ViewModel? {
+        didSet {
+            let viewModel = self.viewModel
+            self.author.text = viewModel?.author
+            if let date = viewModel?.publishedAt {
+                self.publishedAt.text = DateFormatter().string(from: date)
+            }
+            self.title.text = viewModel?.title
+            self.content.text = viewModel?.content
+            if let imageURL = viewModel?.imageURL {
+                self.imageArticle.load(url: imageURL)
+            }
+        }
+    }
+}
+
+extension NewsCell {
+    struct ViewModel {
+        let author: String?
+        let publishedAt: Date?
+        let title: String?
+        let content: String?
+        let imageURL: URL?
+        
+        init(article: Article?) {
+            self.author = article?.author
+            self.publishedAt = article?.publishedAtDate
+            self.title = article?.title
+            self.content = article?.content
+            self.imageURL = article?.urlToImage
         }
     }
 }

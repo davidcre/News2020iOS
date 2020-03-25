@@ -13,13 +13,17 @@ class NewsController: UITableViewController {
     private var newsArticles: [Article] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.send(GetTopHeadlines()) { [weak self] response in
-            response.map { newsArticles in
-                self?.newsArticles = newsArticles
-            }
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
+        apiClient.send(GetTopHeadlines()) { [weak self] result in
+            switch result {
+            case .success(let response):
+                let articles = response.articles ?? []
+                self?.newsArticles = articles
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }                        
         }
     }
 }
@@ -31,12 +35,9 @@ extension NewsController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCellIdentifier", for: indexPath) as? NewsCell {
-            let articleAtIndexPath = self.newsArticles[indexPath.row]
-            cell.configure(author: articleAtIndexPath.author,
-                           publishedAt: articleAtIndexPath.publishedAt,
-                           title: articleAtIndexPath.title,
-                           content: articleAtIndexPath.content,
-                           imageArticle: articleAtIndexPath.urlToImage)
+            let article = self.newsArticles[indexPath.row]
+            let viewModel = NewsCell.ViewModel(article: article)
+            cell.viewModel = viewModel
             return cell
         }
         return UITableViewCell()
