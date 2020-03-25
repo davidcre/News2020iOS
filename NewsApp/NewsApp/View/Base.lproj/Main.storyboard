@@ -245,10 +245,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="author" destination="kGz-JF-l9J" id="L3h-bR-cst"/>
                                     <outlet property="content" destination="hTX-o8-hNI" id="Bl9-fi-0Zc"/>
                                     <outlet property="imageArticle" destination="Sya-WS-csb" id="7b4-kg-32d"/>
                                     <outlet property="publishedAt" destination="vKb-aX-5qg" id="3pV-Jb-LER"/>
+                                    <outlet property="source" destination="kGz-JF-l9J" id="PJI-c3-Ro3"/>
                                     <outlet property="title" destination="H8w-4r-e8e" id="GeV-eM-0Gi"/>
                                 </connections>
                             </tableViewCell>

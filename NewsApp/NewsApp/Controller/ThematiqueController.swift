@@ -15,18 +15,6 @@ class ThematiqueController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToNews" {
-            guard let newsController = segue.destination as? NewsController else {
-                return
-            }
-            guard let indexPath = sender as? IndexPath else {
-                return
-            }
-            newsController.title = thematique[indexPath.row]
-        }
-    }
 }
 
 extension ThematiqueController {
