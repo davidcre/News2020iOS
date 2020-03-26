@@ -21,11 +21,14 @@ struct GetTopHeadlines: APIRequest {
     private let apiKey = "2c64fe5d063645f58a5cd563308d0e7c"
 
     init(
-        country: Country? = Country.fr,
         category: Category? = Category.general,
         query: String? = "") {
-        self.country = country
         self.category = category
         self.query = query
+        if let country = UserDefaults().string(forKey: "Country") {
+            self.country = Country(rawValue: country)
+        } else {
+            self.country = Country.fr
+        }
     }
 }

@@ -41,7 +41,6 @@ class APIClient {
 
         // Custom query items needed for this specific request
         let customQueryItems: [URLQueryItem]
-
         do {
             customQueryItems = try URLQueryItemEncoder.encode(request)
         } catch {
@@ -51,6 +50,7 @@ class APIClient {
         components.queryItems = customQueryItems
 
         // Construct the final URL with all the previous data
+        print(components.url!)
         return components.url!
     }
 }

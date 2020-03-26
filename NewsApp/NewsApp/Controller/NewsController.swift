@@ -11,9 +11,10 @@ import UIKit
 class NewsController: UITableViewController {
     private let apiClient = APIClient()
     private var newsArticles: [Article] = []
+    var category: Category?
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.send(GetTopHeadlines()) { [weak self] result in
+        apiClient.send(GetTopHeadlines(category: category)) { [weak self] result in
             switch result {
             case .success(let response):
                 let articles = response.articles ?? []

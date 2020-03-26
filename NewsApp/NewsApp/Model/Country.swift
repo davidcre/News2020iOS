@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Country: String, Codable {
+enum Country: String, Codable, CaseIterable {
     case
     ae, ar, at, au, be, bg, br, ca, ch, cn, co, cu, cz, de, eg, fr, gb, gr, hk, hu, id,
     ie, il, `in`, it, jp, kr, lt, lv, ma, mx, my, ng, nl, no, nz, ph, pl, pt, ro, rs,

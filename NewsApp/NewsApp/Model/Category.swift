@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum Category: String, Codable {
+enum Category: String, Codable, CaseIterable {
     case business, sports, health, science, entertainment, technology, general
 }
