@@ -18,7 +18,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="person.circle.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="onClick:forEvent:" destination="Q4Q-1g-KLA" eventType="touchUpInside" id="jHp-WL-dcS"/>
+                                    <action selector="onProfileClicked" destination="Q4Q-1g-KLA" eventType="touchUpInside" id="JbA-aP-i8g"/>
                                 </connections>
                             </button>
                             <connections>
@@ -32,7 +32,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <outlet property="button" destination="6hd-8U-ktK" id="inK-8W-8ei"/>
+                        <outlet property="profileButton" destination="6hd-8U-ktK" id="b8W-TS-D1o"/>
                         <segue destination="Qro-7v-ons" kind="relationship" relationship="viewControllers" id="RYh-j3-VG1"/>
                         <segue destination="H01-rQ-yEn" kind="relationship" relationship="viewControllers" id="WgJ-Zb-ObQ"/>
                         <segue destination="1Pl-Bd-xgB" kind="relationship" relationship="viewControllers" id="MDo-Fn-was"/>
@@ -203,7 +203,7 @@
                                                     <rect key="frame" x="81" y="21" width="46" height="37"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="onClick:forEvent:" destination="QWK-Tw-KmC" eventType="touchUpInside" id="hSt-9Y-J5C"/>
+                                                        <action selector="onCountryClicked" destination="QWK-Tw-KmC" eventType="touchUpInside" id="A4b-fV-Rbe"/>
                                                     </connections>
                                                 </button>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxJ-00-JZg">
@@ -267,8 +267,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Mon Compte" id="MsY-hm-m2Z"/>
                     <connections>
-                        <outlet property="button" destination="tsk-JJ-0bT" id="ocO-Uf-oiN"/>
-                        <outlet property="picker" destination="yxJ-00-JZg" id="2rr-J3-skt"/>
+                        <outlet property="countryButton" destination="tsk-JJ-0bT" id="cEF-nL-KaL"/>
+                        <outlet property="countryPicker" destination="yxJ-00-JZg" id="fQj-mD-WQd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96f-0n-uwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

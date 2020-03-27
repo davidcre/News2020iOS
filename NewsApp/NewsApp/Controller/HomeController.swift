@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 class HomeController: UITabBarController {
-    @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var profileButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    @IBAction func onClick(_ sender: UIButton, forEvent event: UIEvent) {
-        performSegue(withIdentifier: "segueToProfile", sender: nil)
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: Constantes.SegueIdentifier.homeToProfile, sender: nil)
     }
 }

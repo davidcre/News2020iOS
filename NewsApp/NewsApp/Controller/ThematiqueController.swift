@@ -16,7 +16,7 @@ class ThematiqueController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToNews" {
+        if segue.identifier == Constantes.SegueIdentifier.thematiqueToNews {
             guard let newsController = segue.destination as? NewsController else {
                 return
             }
@@ -34,7 +34,7 @@ extension ThematiqueController {
         return category.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ThematiqueCellIdentifier", for: indexPath) as? ThematiqueCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.thematique, for: indexPath) as? ThematiqueCell {
             cell.configure(text: category[indexPath.row])
             return cell
         }
@@ -42,6 +42,6 @@ extension ThematiqueController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "segueToNews", sender: indexPath)
+        performSegue(withIdentifier: Constantes.SegueIdentifier.thematiqueToNews, sender: indexPath)
     }
 }

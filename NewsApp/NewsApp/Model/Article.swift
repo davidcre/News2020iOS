@@ -13,16 +13,16 @@ struct Article: Codable {
     let author: String?
     let title: String?
     let articleDescription: String?
-    private let urlString: String?
-    var urlWeb: URL? {
-        if let urlString = urlString {
+    private let webURLString: String?
+    var webURL: URL? {
+        if let urlString = webURLString {
              return URL(string: urlString)
         }
         return nil
     }
-    private let urlImageString: String?
-    var urlImage: URL? {
-        if let urlString = urlImageString {
+    private let imageURLString: String?
+    var imageURL: URL? {
+        if let urlString = imageURLString {
              return URL(string: urlString)
         }
         return nil
@@ -36,7 +36,7 @@ struct Article: Codable {
     enum CodingKeys: String, CodingKey {
         case source, author, title
         case articleDescription
-        case urlString = "url", urlImageString = "urlToImage", publishedAt, content
+        case webURLString = "url", imageURLString = "urlToImage", publishedAt, content
     }
 }
 

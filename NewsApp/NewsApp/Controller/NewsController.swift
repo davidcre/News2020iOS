@@ -35,7 +35,7 @@ extension NewsController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCellIdentifier", for: indexPath) as? NewsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.news, for: indexPath) as? NewsCell {
             let article = self.newsArticles[indexPath.row]
             let viewModel = NewsCell.ViewModel(article: article)
             cell.viewModel = viewModel
