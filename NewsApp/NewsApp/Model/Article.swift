@@ -13,8 +13,20 @@ struct Article: Codable {
     let author: String?
     let title: String?
     let articleDescription: String?
-    let url: URL?
-    let urlToImage: URL?
+    private let urlString: String?
+    var urlWeb: URL? {
+        if let urlString = urlString {
+             return URL(string: urlString)
+        }
+        return nil
+    }
+    private let urlImageString: String?
+    var urlImage: URL? {
+        if let urlString = urlImageString {
+             return URL(string: urlString)
+        }
+        return nil
+    }
     private let publishedAt: String?
     var publishedAtDate: Date? {
         return publishedAt?.formattedDate
@@ -24,7 +36,7 @@ struct Article: Codable {
     enum CodingKeys: String, CodingKey {
         case source, author, title
         case articleDescription
-        case url, urlToImage, publishedAt, content
+        case urlString = "url", urlImageString = "urlToImage", publishedAt, content
     }
 }
 

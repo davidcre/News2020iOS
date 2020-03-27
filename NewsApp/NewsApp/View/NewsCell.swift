@@ -46,7 +46,7 @@ extension NewsCell {
             self.publishedAt = article?.publishedAtDate
             self.title = article?.title
             self.content = article?.content
-            self.imageURL = article?.urlToImage
+            self.imageURL = article?.urlImage
         }
     }
 }

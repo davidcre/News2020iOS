@@ -9,8 +9,8 @@
 import UIKit
 
 class ThematiqueController: UITableViewController {
-    
     private let category = ["Économie", "Sports", "Santé", "Science", "Divertissement", "Technologie"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

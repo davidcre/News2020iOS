@@ -12,7 +12,7 @@
             <objects>
                 <tabBarController id="Q4Q-1g-KLA" customClass="HomeController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="5TP-J0-ZQW">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="8EC-RZ-HGk">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="8EC-RZ-HGk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6hd-8U-ktK">
                                 <rect key="frame" x="360" y="11" width="34" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -278,7 +278,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ViR-3K-IRq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5aZ-Nm-QUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="iNr-WX-xVJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V5P-8k-j9k">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -288,6 +287,7 @@
                         <segue destination="QWK-Tw-KmC" kind="relationship" relationship="rootViewController" id="63C-v7-r2P"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5aZ-Nm-QUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="12" y="-1302"/>
         </scene>
@@ -413,6 +413,6 @@
         <image name="square.stack.3d.up.fill" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8WM-V4-L2o"/>
+        <segue reference="Rx1-tN-LYB"/>
     </inferredMetricsTieBreakers>
 </document>

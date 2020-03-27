@@ -10,10 +10,8 @@ import Foundation
 
 enum URLQueryItemEncoder {
     static func encode<T: Encodable>(_ encodable: T) throws -> [URLQueryItem] {
-        print(encodable)
         let parametersData = try JSONEncoder().encode(encodable)
         let parameters = try JSONDecoder().decode([String: HTTPParameter].self, from: parametersData)
-        print(parameters)
         let parametersFiltered = parameters.filter { $1.description != "" }
         return parametersFiltered.map { URLQueryItem(name: $0, value: $1.description) }
     }

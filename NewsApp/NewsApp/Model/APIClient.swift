@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class APIClient {
     private let baseEndpointUrl = URL(string: "http://newsapi.org/v2/")!
@@ -50,7 +51,6 @@ class APIClient {
         components.queryItems = customQueryItems
 
         // Construct the final URL with all the previous data
-        print(components.url!)
         return components.url!
     }
 }
