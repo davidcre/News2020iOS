@@ -22,6 +22,13 @@ class ProfileController: UITableViewController {
     }
 
     @IBAction func onClick(_ sender: UIButton, forEvent event: UIEvent) {
+        if let countryString = UserDefaults().string(forKey: "Country") {
+            if let country = Country(rawValue: countryString) {
+                if let index = country.index {
+                    picker.selectRow(index, inComponent: 0, animated: false)
+                }
+            }
+        }
         picker.isHidden = false
     }
 }
