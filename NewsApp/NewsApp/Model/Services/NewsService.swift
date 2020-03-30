@@ -16,7 +16,9 @@ protocol NewsService {
 class NewsServiceImpl: NewsService {
     var newsArticles: [Article] = []
     let apiClient = APIClient()
-    let country: Country? = PreferencesServiceImpl().getCountry()
+    var country: Country? {
+        return PreferencesServiceImpl().getCountry()
+    }
 
     func getTopHeadlines(for category: Category?, completion: @escaping () -> Void) {
         apiClient.send(GetTopHeadlines(category: category?.type, country: country)) { [weak self] result in
