@@ -33,7 +33,7 @@ class ProfileController: UITableViewController {
 }
 
 extension ProfileController {
-    func saveCountry(_ selectedCountry: Country?) {
+    private func saveCountry(_ selectedCountry: Country?) {
         guard let country = selectedCountry else {
             return
         }
