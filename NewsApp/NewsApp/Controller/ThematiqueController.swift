@@ -9,7 +9,13 @@
 import UIKit
 
 class ThematiqueController: UITableViewController {
-    private let category = ["Économie", "Sports", "Santé", "Science", "Divertissement", "Technologie"]
+    private let category = [Category(title: "Général", type: .general),
+                            Category(title: "Économie", type: .business),
+                            Category(title: "Sports", type: .sports),
+                            Category(title: "Santé", type: .health),
+                            Category(title: "Science", type: .science),
+                            Category(title: "Technologie", type: .technology),
+                            Category(title: "Divertissement", type: .entertainment)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +29,7 @@ class ThematiqueController: UITableViewController {
             guard let indexPath = sender as? IndexPath else {
                 return
             }
-            newsController.title = category[indexPath.row]
-            newsController.category = Category.allCases[indexPath.row]
+            newsController.category = category[indexPath.row]
         }
     }
 }
@@ -34,12 +39,13 @@ extension ThematiqueController {
         return category.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.thematique, for: indexPath) as? ThematiqueCell {
-            cell.configure(text: category[indexPath.row])
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.thematique, for: indexPath) as? ThematiqueCell else {
+            return UITableViewCell()
         }
-        return UITableViewCell()
+        cell.configure(category: category[indexPath.row])
+        return cell
     }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: Constantes.SegueIdentifier.thematiqueToNews, sender: indexPath)

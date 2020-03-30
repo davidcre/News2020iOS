@@ -51,11 +51,11 @@ extension ProfileController: UIPickerViewDataSource {
 
 extension ProfileController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Country.allCases[row].rawValue
+        return Country.allCases[row].name
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryButton.setTitle(Country.allCases[row].rawValue, for: .normal)
-        UserDefaults().set(Country.allCases[row].rawValue, forKey: Constantes.UserDefaultsKey.country)
+        countryButton.setTitle(Country.allCases[row].name, for: .normal)
+        UserDefaults().set(Country.allCases[row].name, forKey: Constantes.UserDefaultsKey.country)
     }
 }

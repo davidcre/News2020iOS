@@ -14,7 +14,8 @@ class NewsController: UITableViewController {
     var category: Category?
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.send(GetTopHeadlines(category: category)) { [weak self] result in
+        self.title = category?.title
+        apiClient.send(GetTopHeadlines(category: category?.type)) { [weak self] result in
             switch result {
             case .success(let response):
                 let articles = response.articles ?? []
@@ -35,13 +36,13 @@ extension NewsController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.news, for: indexPath) as? NewsCell {
-            let article = self.newsArticles[indexPath.row]
-            let viewModel = NewsCell.ViewModel(article: article)
-            cell.viewModel = viewModel
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.news, for: indexPath) as? NewsCell else {
+            return UITableViewCell()
         }
-        return UITableViewCell()
+        let article = self.newsArticles[indexPath.row]
+        let viewModel = NewsCell.ViewModel(article: article)
+        cell.viewModel = viewModel
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
