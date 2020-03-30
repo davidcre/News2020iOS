@@ -9,20 +9,25 @@
 import UIKit
 
 class NewsController: UITableViewController {
-    private let apiClient = APIClient()
-    private var newsArticles: [Article] = []
+    private let newsService: NewsService = NewsServiceImpl()
+    var category: Category?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.send(GetTopHeadlines()) { [weak self] result in
-            switch result {
-            case .success(let response):
-                let articles = response.articles ?? []
-                self?.newsArticles = articles
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
+        self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
+        self.title = category?.title
+        loadData()
+    }
+
+    @objc func reloadDataTableView() {
+        loadData()
+        self.refreshControl?.endRefreshing()
+    }
+
+    func loadData() {
+        self.newsService.getTopHeadlines(for: category) { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
     }
@@ -30,17 +35,17 @@ class NewsController: UITableViewController {
 
 extension NewsController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.newsArticles.count
+        return newsService.newsArticles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCellIdentifier", for: indexPath) as? NewsCell {
-            let article = self.newsArticles[indexPath.row]
-            let viewModel = NewsCell.ViewModel(article: article)
-            cell.viewModel = viewModel
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.news, for: indexPath) as? NewsCell else {
+            return UITableViewCell()
         }
-        return UITableViewCell()
+        let article = newsService.newsArticles[indexPath.row]
+        let viewModel = NewsCell.ViewModel(article: article)
+        cell.viewModel = viewModel
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

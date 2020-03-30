@@ -11,7 +11,7 @@ class ThematiqueCell: UITableViewCell {
     @IBOutlet private weak var thematique: UILabel!
     @IBOutlet private weak var imageThematique: UIImageView!
 
-    func configure(text: String) {
-        self.thematique.text = text
+    func configure(category: Category) {
+        self.thematique.text = category.title
     }
 }

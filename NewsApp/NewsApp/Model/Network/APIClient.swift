@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class APIClient {
     private let baseEndpointUrl = URL(string: "http://newsapi.org/v2/")!
@@ -41,7 +42,6 @@ class APIClient {
 
         // Custom query items needed for this specific request
         let customQueryItems: [URLQueryItem]
-
         do {
             customQueryItems = try URLQueryItemEncoder.encode(request)
         } catch {

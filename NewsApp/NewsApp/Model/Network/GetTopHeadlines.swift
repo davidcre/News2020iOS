@@ -16,16 +16,16 @@ struct GetTopHeadlines: APIRequest {
     }
 
     private let country: Country?
-    private let category: Category?
+    private let category: CategoryType?
     private let query: String?
     private let apiKey = "2c64fe5d063645f58a5cd563308d0e7c"
 
     init(
-        country: Country? = Country.fr,
-        category: Category? = Category.general,
+        category: CategoryType? = .general,
+        country: Country?,
         query: String? = "") {
-        self.country = country
         self.category = category
         self.query = query
+        self.country = country
     }
 }

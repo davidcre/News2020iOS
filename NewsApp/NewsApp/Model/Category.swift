@@ -8,6 +8,11 @@
 
 import Foundation
 
-enum Category: String, Codable {
+enum CategoryType: String, Codable, CaseIterable {
     case business, sports, health, science, entertainment, technology, general
+}
+
+struct Category {
+    let title: String
+    let type: CategoryType
 }
