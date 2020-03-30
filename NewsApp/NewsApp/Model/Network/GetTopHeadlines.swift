@@ -22,13 +22,10 @@ struct GetTopHeadlines: APIRequest {
 
     init(
         category: CategoryType? = .general,
+        country: Country?,
         query: String? = "") {
         self.category = category
         self.query = query
-        if let country = PreferencesServiceImpl().getCountry() {
-            self.country = country
-        } else {
-            self.country = .fr
-        }
+        self.country = country
     }
 }

@@ -13,7 +13,7 @@ class ProfileController: UITableViewController {
     @IBOutlet private weak var countryButton: UIButton!
     @IBOutlet private weak var countryPicker: UIPickerView!
     private var countrySelected: Country?
-    private let preferencesService = PreferencesServiceImpl()
+    private let preferencesService: PreferencesService = PreferencesServiceImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
