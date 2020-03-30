@@ -12,22 +12,29 @@ import UIKit
 class ProfileController: UITableViewController {
     @IBOutlet private weak var countryButton: UIButton!
     @IBOutlet private weak var countryPicker: UIPickerView!
+    private var countrySelected: Country?
+    private let preferencesService = PreferencesServiceImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let country = UserDefaults().string(forKey: Constantes.UserDefaultsKey.country) {
-            countryButton.setTitle(country, for: .normal)
+        if let country = preferencesService.getCountry() {
+            countryButton.setTitle(country.name, for: .normal)
+            self.countrySelected = country
         }
         countryPicker.isHidden = true
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        guard let country = countrySelected else {
+            return
+        }
+        preferencesService.saveCountry(country)
+    }
+
     @IBAction func onCountryClicked() {
-        if let countryString = UserDefaults().string(forKey: Constantes.UserDefaultsKey.country) {
-            if let country = Country(rawValue: countryString) {
-                if let index = country.index {
-                    countryPicker.selectRow(index, inComponent: 0, animated: false)
-                }
-            }
+        if let index = countrySelected!.index {
+            countryPicker.selectRow(index, inComponent: 0, animated: false)
         }
         countryPicker.isHidden = false
     }
@@ -56,6 +63,6 @@ extension ProfileController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         countryButton.setTitle(Country.allCases[row].name, for: .normal)
-        UserDefaults().set(Country.allCases[row].name, forKey: Constantes.UserDefaultsKey.country)
+        countrySelected = Country.allCases[row]
     }
 }
