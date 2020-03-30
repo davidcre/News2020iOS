@@ -24,19 +24,20 @@ class ProfileController: UITableViewController {
         countryPicker.isHidden = true
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        guard let country = countrySelected else {
-            return
-        }
-        preferencesService.saveCountry(country)
-    }
-
     @IBAction func onCountryClicked() {
         if let index = countrySelected!.index {
             countryPicker.selectRow(index, inComponent: 0, animated: false)
         }
         countryPicker.isHidden = false
+    }
+}
+
+extension ProfileController {
+    func saveCountry(_ selectedCountry: Country?) {
+        guard let country = selectedCountry else {
+            return
+        }
+        preferencesService.saveCountry(country)
     }
 }
 
@@ -64,5 +65,6 @@ extension ProfileController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         countryButton.setTitle(Country.allCases[row].name, for: .normal)
         countrySelected = Country.allCases[row]
+        saveCountry(countrySelected)
     }
 }

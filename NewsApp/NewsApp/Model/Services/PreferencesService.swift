@@ -14,6 +14,7 @@ protocol PreferencesService {
 }
 
 class PreferencesServiceImpl: PreferencesService {
+
     func saveCountry(_ country: Country) {
         UserDefaults.standard.set(country.name, forKey: Constantes.UserDefaultsKey.country)
     }
