@@ -14,22 +14,22 @@ class NewsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: UIControl.Event.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
         self.title = category?.title
-        self.newsService.getTopHeadlines(for: category) {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        loadData()
     }
 
     @objc func reloadDataTableView() {
-        self.newsService.getTopHeadlines(for: category) {
+        loadData()
+        self.refreshControl?.endRefreshing()
+    }
+
+    func loadData() {
+        self.newsService.getTopHeadlines(for: category) { [weak self] in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
-        self.refreshControl?.endRefreshing()
     }
 }
 
