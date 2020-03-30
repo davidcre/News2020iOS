@@ -9,22 +9,15 @@
 import UIKit
 
 class NewsController: UITableViewController {
-    private let apiClient = APIClient()
-    private var newsArticles: [Article] = []
+    private let newsService: NewsService = NewsServiceImpl()
     var category: Category?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = category?.title
-        apiClient.send(GetTopHeadlines(category: category?.type)) { [weak self] result in
-            switch result {
-            case .success(let response):
-                let articles = response.articles ?? []
-                self?.newsArticles = articles
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
+        self.newsService.getTopHeadlines(for: category) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
@@ -32,14 +25,14 @@ class NewsController: UITableViewController {
 
 extension NewsController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.newsArticles.count
+        return newsService.newsArticles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.news, for: indexPath) as? NewsCell else {
             return UITableViewCell()
         }
-        let article = self.newsArticles[indexPath.row]
+        let article = newsService.newsArticles[indexPath.row]
         let viewModel = NewsCell.ViewModel(article: article)
         cell.viewModel = viewModel
         return cell

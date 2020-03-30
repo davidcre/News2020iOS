@@ -25,8 +25,8 @@ struct GetTopHeadlines: APIRequest {
         query: String? = "") {
         self.category = category
         self.query = query
-        if let country = UserDefaults().string(forKey: Constantes.UserDefaultsKey.country) {
-            self.country = Country(rawValue: country)
+        if let country = PreferencesServiceImpl().getCountry() {
+            self.country = country
         } else {
             self.country = .fr
         }

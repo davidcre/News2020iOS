@@ -10,19 +10,20 @@ import Foundation
 
 protocol NewsService {
     var newsArticles: [Article] { get set }
-    func getTopHeadlines(category: Category?)
+    func getTopHeadlines(for category: Category?, completion: @escaping () -> Void)
 }
 
 class NewsServiceImpl: NewsService {
     var newsArticles: [Article] = []
     let apiClient = APIClient()
 
-    func getTopHeadlines(category: Category?) {
+    func getTopHeadlines(for category: Category?, completion: @escaping () -> Void) {
         apiClient.send(GetTopHeadlines(category: category?.type)) { [weak self] result in
             switch result {
             case .success(let response):
                 let articles = response.articles ?? []
                 self?.newsArticles = articles
+                completion()
             case .failure(let error):
                 debugPrint(error.localizedDescription)
             }
