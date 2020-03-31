@@ -9,13 +9,13 @@
 import UIKit
 
 class ThematiqueController: UITableViewController {
-    private let category = [Category(title: "Général", type: .general),
-                            Category(title: "Économie", type: .business),
-                            Category(title: "Sports", type: .sports),
-                            Category(title: "Santé", type: .health),
-                            Category(title: "Science", type: .science),
-                            Category(title: "Technologie", type: .technology),
-                            Category(title: "Divertissement", type: .entertainment)]
+    private let category = [Category(title: NSLocalizedString("General", comment: "Name of the category"), type: .general),
+                            Category(title: NSLocalizedString("Business", comment: "Name of the category"), type: .business),
+                            Category(title: NSLocalizedString("Sports", comment: "Name of the category"), type: .sports),
+                            Category(title: NSLocalizedString("Health", comment: "Name of the category"), type: .health),
+                            Category(title: NSLocalizedString("Science", comment: "Name of the category"), type: .science),
+                            Category(title: NSLocalizedString("Technology", comment: "Name of the category"), type: .technology),
+                            Category(title: NSLocalizedString("Entertainment", comment: "Name of the category"), type: .entertainment)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
