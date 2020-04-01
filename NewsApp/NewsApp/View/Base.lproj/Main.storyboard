@@ -42,11 +42,11 @@
             </objects>
             <point key="canvasLocation" x="-487" y="-351"/>
         </scene>
-        <!--Recherche-->
+        <!--Search-->
         <scene sceneID="8nC-tK-us7">
             <objects>
                 <navigationController id="1Pl-Bd-xgB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recherche" image="magnifyingglass" catalog="system" id="IsZ-N7-IME"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="IsZ-N7-IME"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fea-6y-3Qk">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="1025" y="601"/>
         </scene>
-        <!--Recherche-->
+        <!--Search-->
         <scene sceneID="m79-K3-GxW">
             <objects>
                 <viewController id="ggr-9V-3g6" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rechercher un article" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-iK-8Ux">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for an article" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-iK-8Ux">
                                 <rect key="frame" x="10" y="98" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FCf-po-sbG"/>
@@ -84,17 +84,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YN8-ms-ePp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recherche" id="BWu-ve-Iec"/>
+                    <navigationItem key="navigationItem" title="Search" id="BWu-ve-Iec"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AmD-oB-BDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094" y="601"/>
         </scene>
-        <!--Thématiques-->
+        <!--Categories-->
         <scene sceneID="6bS-cf-N3e">
             <objects>
                 <navigationController id="H01-rQ-yEn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Thématiques" image="square.stack.3d.up.fill" catalog="system" id="LpD-kO-JCp"/>
+                    <tabBarItem key="tabBarItem" title="Categories" image="square.stack.3d.up.fill" catalog="system" id="LpD-kO-JCp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EFT-rI-Gwg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -107,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="1025" y="-88"/>
         </scene>
-        <!--Thématiques-->
+        <!--Categories-->
         <scene sceneID="OW0-W2-cDs">
             <objects>
                 <tableViewController id="o8U-lE-HKS" customClass="ThematiqueController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -155,7 +155,7 @@
                             <outlet property="delegate" destination="o8U-lE-HKS" id="365-iZ-TTy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Thématiques" id="Q0P-yj-nP0"/>
+                    <navigationItem key="navigationItem" title="Categories" id="Q0P-yj-nP0"/>
                     <connections>
                         <segue destination="PFC-Tw-cy7" kind="show" identifier="segueToNews" id="Rx1-tN-LYB"/>
                     </connections>
@@ -164,11 +164,11 @@
             </objects>
             <point key="canvasLocation" x="2085.507246376812" y="-82.366071428571431"/>
         </scene>
-        <!--À la une-->
+        <!--Top Headlines-->
         <scene sceneID="K4W-XA-OAs">
             <objects>
                 <navigationController id="Qro-7v-ons" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="À la une" image="exclamationmark.bubble.fill" catalog="system" id="IwK-5U-0ub"/>
+                    <tabBarItem key="tabBarItem" title="Top Headlines" image="exclamationmark.bubble.fill" catalog="system" id="IwK-5U-0ub"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Ob-8K-jAN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -181,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="1013" y="-849"/>
         </scene>
-        <!--Mon Compte-->
+        <!--My Account-->
         <scene sceneID="58c-a5-Kbp">
             <objects>
                 <tableViewController id="QWK-Tw-KmC" customClass="ProfileController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -190,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Préférences" id="5EY-YW-gYk">
+                            <tableViewSection headerTitle="Preferences" id="5EY-YW-gYk">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="154" id="Dkc-MX-Y3W">
                                         <rect key="frame" x="0.0" y="28" width="414" height="154"/>
@@ -200,7 +200,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsk-JJ-0bT">
-                                                    <rect key="frame" x="66" y="10" width="328" height="30"/>
+                                                    <rect key="frame" x="91.5" y="10" width="302.5" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="onCountryClicked" destination="QWK-Tw-KmC" eventType="touchUpInside" id="A4b-fV-Rbe"/>
@@ -213,8 +213,8 @@
                                                         <outlet property="delegate" destination="QWK-Tw-KmC" id="8PZ-Lo-e2V"/>
                                                     </connections>
                                                 </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Pays" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-6z-22e">
-                                                    <rect key="frame" x="20" y="10" width="36" height="38"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-6z-22e">
+                                                    <rect key="frame" x="20" y="10" width="61.5" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -237,7 +237,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Plus" id="gls-uV-LeO">
+                            <tableViewSection headerTitle="More" id="gls-uV-LeO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="57" id="sFu-EP-UpB">
                                         <rect key="frame" x="0.0" y="238" width="414" height="57"/>
@@ -246,17 +246,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Développé par Josselin Duboc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lV-bU-SP6">
-                                                    <rect key="frame" x="30" y="21" width="354" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by Josselin Duboc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lV-bU-SP6">
+                                                    <rect key="frame" x="30" y="16" width="354" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1lV-bU-SP6" firstAttribute="top" secondItem="KOY-fr-vo5" secondAttribute="topMargin" constant="10" id="TB4-RV-9SX"/>
+                                                <constraint firstItem="1lV-bU-SP6" firstAttribute="top" secondItem="KOY-fr-vo5" secondAttribute="topMargin" constant="5" id="TB4-RV-9SX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="1lV-bU-SP6" secondAttribute="trailing" constant="10" id="Thb-SZ-pkW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="1lV-bU-SP6" secondAttribute="bottom" constant="10" id="dgY-C6-yT9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1lV-bU-SP6" secondAttribute="bottom" constant="5" id="dgY-C6-yT9"/>
                                                 <constraint firstItem="1lV-bU-SP6" firstAttribute="leading" secondItem="KOY-fr-vo5" secondAttribute="leadingMargin" constant="10" id="iB4-QG-rFI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -265,7 +265,7 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Mon Compte" id="MsY-hm-m2Z"/>
+                    <navigationItem key="navigationItem" title="My Account" id="MsY-hm-m2Z"/>
                     <connections>
                         <outlet property="countryButton" destination="tsk-JJ-0bT" id="cEF-nL-KaL"/>
                         <outlet property="countryPicker" destination="yxJ-00-JZg" id="fQj-mD-WQd"/>
@@ -291,7 +291,7 @@
             </objects>
             <point key="canvasLocation" x="12" y="-1302"/>
         </scene>
-        <!--À la une-->
+        <!--Top Headlines-->
         <scene sceneID="ocK-Ok-ceH">
             <objects>
                 <tableViewController id="PFC-Tw-cy7" customClass="NewsController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -383,8 +383,9 @@
                             <outlet property="delegate" destination="PFC-Tw-cy7" id="Ybe-pZ-v9D"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="À la une" id="0US-6f-Vc6"/>
+                    <navigationItem key="navigationItem" title="Top Headlines" id="0US-6f-Vc6"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="eLR-qe-NpV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
@@ -417,6 +418,6 @@
         <image name="square.stack.3d.up.fill" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rx1-tN-LYB"/>
+        <segue reference="8WM-V4-L2o"/>
     </inferredMetricsTieBreakers>
 </document>
