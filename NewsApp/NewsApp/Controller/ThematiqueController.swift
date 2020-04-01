@@ -9,20 +9,20 @@
 import UIKit
 
 class ThematiqueController: UITableViewController {
-    private let category = [Category(title: NSLocalizedString("General", comment: "Name of the category"), type: .general),
-                            Category(title: NSLocalizedString("Business", comment: "Name of the category"), type: .business),
-                            Category(title: NSLocalizedString("Sports", comment: "Name of the category"), type: .sports),
-                            Category(title: NSLocalizedString("Health", comment: "Name of the category"), type: .health),
-                            Category(title: NSLocalizedString("Science", comment: "Name of the category"), type: .science),
-                            Category(title: NSLocalizedString("Technology", comment: "Name of the category"), type: .technology),
-                            Category(title: NSLocalizedString("Entertainment", comment: "Name of the category"), type: .entertainment)]
+    private let category = [Category(title: R.string.localizable.general(), type: .general),
+                            Category(title: R.string.localizable.business(), type: .business),
+                            Category(title: R.string.localizable.sports(), type: .sports),
+                            Category(title: R.string.localizable.health(), type: .health),
+                            Category(title: R.string.localizable.science(), type: .science),
+                            Category(title: R.string.localizable.technology(), type: .technology),
+                            Category(title: R.string.localizable.entertainment(), type: .entertainment)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constantes.SegueIdentifier.thematiqueToNews {
+        if segue.identifier == R.segue.thematiqueController.segueToNews.identifier {
             guard let newsController = segue.destination as? NewsController else {
                 return
             }
@@ -39,7 +39,7 @@ extension ThematiqueController {
         return category.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.thematique, for: indexPath) as? ThematiqueCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.thematiqueCellIdentifier, for: indexPath) else {
             return UITableViewCell()
         }
         cell.configure(category: category[indexPath.row])
@@ -48,6 +48,6 @@ extension ThematiqueController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: Constantes.SegueIdentifier.thematiqueToNews, sender: indexPath)
+        performSegue(withIdentifier: R.segue.thematiqueController.segueToNews, sender: indexPath)
     }
 }

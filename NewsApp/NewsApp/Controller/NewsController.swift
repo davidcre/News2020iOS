@@ -39,7 +39,7 @@ extension NewsController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.CellIdentifier.news, for: indexPath) as? NewsCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.newsCellIdentifier, for: indexPath) else {
             return UITableViewCell()
         }
         let article = newsService.newsArticles[indexPath.row]
