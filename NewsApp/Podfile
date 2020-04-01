@@ -7,6 +7,7 @@ target 'NewsApp' do
 
   # Pods for NewsApp
 	pod "SwiftLint"
+	pod 'R.swift'
 
   target 'NewsAppTests' do
     inherit! :search_paths
