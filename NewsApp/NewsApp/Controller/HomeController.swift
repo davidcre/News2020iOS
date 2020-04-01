@@ -17,6 +17,6 @@ class HomeController: UITabBarController {
     }
 
     @IBAction func onProfileClicked() {
-        performSegue(withIdentifier: Constantes.SegueIdentifier.homeToProfile, sender: nil)
+        performSegue(withIdentifier: R.segue.homeController.segueToProfile, sender: nil)
     }
 }

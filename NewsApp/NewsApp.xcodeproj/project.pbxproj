@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		CD45C7672431E29700DA6519 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD45C7662431E29700DA6519 /* NewsService.swift */; };
 		CD45C76A2431F75500DA6519 /* PreferencesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD45C7692431F75500DA6519 /* PreferencesService.swift */; };
 		CD45C77024332F1B00DA6519 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD45C77224332F1B00DA6519 /* Localizable.strings */; };
+		CD45C77924347F5800DA6519 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD45C77824347F5800DA6519 /* R.generated.swift */; };
 		CD472ACC24238A2F0013490C /* ThematiqueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD472ACB24238A2F0013490C /* ThematiqueCell.swift */; };
 		CD472AD82423C8310013490C /* UIImageView+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD472AD72423C8310013490C /* UIImageView+load.swift */; };
 		CD4A05CF242CA32600A75E76 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A05CE242CA32600A75E76 /* HomeController.swift */; };
@@ -78,6 +79,7 @@
 		CD45C7742433307F00DA6519 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		CD45C7752433307F00DA6519 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CD45C7762433307F00DA6519 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CD45C77824347F5800DA6519 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		CD472ACB24238A2F0013490C /* ThematiqueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThematiqueCell.swift; sourceTree = "<group>"; };
 		CD472AD72423C8310013490C /* UIImageView+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+load.swift"; sourceTree = "<group>"; };
 		CD4A05CE242CA32600A75E76 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		CD7F1FD92421137E00B44A17 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD45C77824347F5800DA6519 /* R.generated.swift */,
 				CD8A693C24220EAF00CD083D /* Controller */,
 				CD8A693B24220EA800CD083D /* View */,
 				CD8A693A24220E9C00CD083D /* Model */,
@@ -288,10 +291,12 @@
 			buildConfigurationList = CD7F20042421137F00B44A17 /* Build configuration list for PBXNativeTarget "NewsApp" */;
 			buildPhases = (
 				855228B019F901113B11B4A7 /* [CP] Check Pods Manifest.lock */,
+				CD45C77724347B9D00DA6519 /* ShellScript */,
 				CD7F1FD32421137E00B44A17 /* Sources */,
 				CD7F1FD42421137E00B44A17 /* Frameworks */,
 				CD7F1FD52421137E00B44A17 /* Resources */,
 				CD8A693D2422105D00CD083D /* ShellScript */,
+				187DF1E8BFD98E808648C671 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +334,7 @@
 				CD7F1FF72421137F00B44A17 /* Sources */,
 				CD7F1FF82421137F00B44A17 /* Frameworks */,
 				CD7F1FF92421137F00B44A17 /* Resources */,
+				C309EC3D105E86917B5E3D61 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,6 +420,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		187DF1E8BFD98E808648C671 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		52817DBA17EDA139BA956BAA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,6 +503,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C309EC3D105E86917B5E3D61 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewsApp-NewsAppUITests/Pods-NewsApp-NewsAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewsApp-NewsAppUITests/Pods-NewsApp-NewsAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewsApp-NewsAppUITests/Pods-NewsApp-NewsAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD45C77724347B9D00DA6519 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		CD8A693D2422105D00CD083D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,6 +565,7 @@
 			files = (
 				CD451BBD242B91180031E6E2 /* ArticleContainer.swift in Sources */,
 				CD45C765242E3F7B00DA6519 /* Constantes.swift in Sources */,
+				CD45C77924347F5800DA6519 /* R.generated.swift in Sources */,
 				CD60313F24278E32005775CE /* Article.swift in Sources */,
 				CD60314D2428BB3E005775CE /* NewsError.swift in Sources */,
 				CD6031452428A57E005775CE /* APIClient.swift in Sources */,
