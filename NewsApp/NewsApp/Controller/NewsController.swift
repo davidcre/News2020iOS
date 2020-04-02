@@ -9,13 +9,13 @@
 import UIKit
 
 class NewsController: UITableViewController {
-    private let newsService: NewsService = NewsServiceImpl()
-    var category: Category?
+    var newsService: NewsService = NewsServiceImpl()
+    var viewTitle: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
-        self.title = category?.title
+        self.title = viewTitle
         loadData()
     }
 
@@ -25,7 +25,7 @@ class NewsController: UITableViewController {
     }
 
     func loadData() {
-        self.newsService.getTopHeadlines(for: category) { [weak self] in
+        self.newsService.getArticles { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }

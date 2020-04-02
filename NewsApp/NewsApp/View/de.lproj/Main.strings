@@ -52,3 +52,6 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "vKb-aX-5qg"; */
 "vKb-aX-5qg.text" = "Label";
+
+/* Class = "UISearchBar"; text = "Search for an article"; ObjectID = "mdt-Tt-gtQ"; */
+"mdt-Tt-gtQ.placeholder" = "Suchen einen Artikel";

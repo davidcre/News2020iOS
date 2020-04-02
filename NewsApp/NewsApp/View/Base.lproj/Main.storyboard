@@ -62,33 +62,43 @@
         <!--Search-->
         <scene sceneID="m79-K3-GxW">
             <objects>
-                <viewController id="ggr-9V-3g6" sceneMemberID="viewController">
+                <viewController id="ggr-9V-3g6" customClass="SearchController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fU-dd-zcx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for an article" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-iK-8Ux">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for an article" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdt-Tt-gtQ">
                                 <rect key="frame" x="10" y="98" width="394" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="FCf-po-sbG"/>
+                                    <constraint firstAttribute="height" constant="40" id="7Lq-Cg-DGk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="ggr-9V-3g6" id="UG9-XK-r0S"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="YN8-ms-ePp" firstAttribute="trailing" secondItem="Agp-iK-8Ux" secondAttribute="trailing" constant="10" id="VLb-O1-3uv"/>
-                            <constraint firstItem="Agp-iK-8Ux" firstAttribute="leading" secondItem="YN8-ms-ePp" secondAttribute="leading" constant="10" id="dX5-Mi-H6y"/>
-                            <constraint firstItem="Agp-iK-8Ux" firstAttribute="top" secondItem="YN8-ms-ePp" secondAttribute="top" constant="10" id="xaJ-6K-skm"/>
+                            <constraint firstItem="mdt-Tt-gtQ" firstAttribute="top" secondItem="YN8-ms-ePp" secondAttribute="top" constant="10" id="Anz-DE-da9"/>
+                            <constraint firstItem="mdt-Tt-gtQ" firstAttribute="trailing" secondItem="YN8-ms-ePp" secondAttribute="trailing" constant="-10" id="ICb-Lu-dFk"/>
+                            <constraint firstItem="mdt-Tt-gtQ" firstAttribute="leading" secondItem="YN8-ms-ePp" secondAttribute="leading" constant="10" id="t4k-q0-i2O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YN8-ms-ePp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="BWu-ve-Iec"/>
+                    <connections>
+                        <outlet property="searchBar" destination="mdt-Tt-gtQ" id="Qaf-LG-bKb"/>
+                        <segue destination="PFC-Tw-cy7" kind="show" identifier="segueToNews" id="0rV-Vh-Ebk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AmD-oB-BDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="601"/>
+            <point key="canvasLocation" x="2092.753623188406" y="600"/>
         </scene>
         <!--Categories-->
         <scene sceneID="6bS-cf-N3e">
@@ -418,6 +428,6 @@
         <image name="square.stack.3d.up.fill" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8WM-V4-L2o"/>
+        <segue reference="0rV-Vh-Ebk"/>
     </inferredMetricsTieBreakers>
 </document>
