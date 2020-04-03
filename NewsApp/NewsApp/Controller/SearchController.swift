@@ -33,6 +33,9 @@ class SearchController: UIViewController {
 
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard searchBar.text != "" else {
+            return
+        }
         let parametersRequest: ParametersRequest = ParametersRequest(query: searchBar.text, requestType: .everything)
         performSegue(withIdentifier: R.segue.searchController.segueToNews, sender: parametersRequest)
     }
