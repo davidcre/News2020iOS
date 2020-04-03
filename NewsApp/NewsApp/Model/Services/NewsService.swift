@@ -11,7 +11,7 @@ import Foundation
 protocol NewsService {
     var newsArticles: [Article] { get }
     var parametersRequest: ParametersRequest { get }
-    func getArticles(completion: @escaping () -> Void)
+    func fetchArticles(completion: @escaping () -> Void)
 }
 
 class NewsServiceImpl: NewsService {
@@ -54,20 +54,20 @@ class NewsServiceImpl: NewsService {
         return parametersRequest.sortBy
     }
 
-    func getArticles(completion: @escaping () -> Void) {
+    func fetchArticles(completion: @escaping () -> Void) {
         switch requestType {
         case .topHeadlines:
-            getTopHeadlines {
+            fetchTopHeadlines {
                 completion()
             }
         case .everything:
-            getEverything {
+            fetchEverything {
                 completion()
             }
         }
     }
 
-    func getTopHeadlines(completion: @escaping () -> Void) {
+    func fetchTopHeadlines(completion: @escaping () -> Void) {
         apiClient.send(GetTopHeadlines(category: category?.type, country: country)) { [weak self] result in
             switch result {
             case .success(let response):
@@ -80,7 +80,7 @@ class NewsServiceImpl: NewsService {
         }
     }
 
-    func getEverything(completion: @escaping () -> Void) {
+    func fetchEverything(completion: @escaping () -> Void) {
         apiClient.send(GetEverything(language: language, from: dateFrom, to: dateTo, query: query, sortBy: sortBy)) { [weak self] result in
             switch result {
             case .success(let response):

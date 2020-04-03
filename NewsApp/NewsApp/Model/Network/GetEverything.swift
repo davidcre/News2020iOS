@@ -25,10 +25,10 @@ struct GetEverything: APIRequest {
 
     init(
         language: Language? = .fr,
-        from: Date?,
-        to: Date?,
+        from: Date? = nil,
+        to: Date? = nil,
         query: String?,
-        sortBy: SortBy?) {
+        sortBy: SortBy? = nil) {
         self.language = language
         self.from = from
         self.to = to

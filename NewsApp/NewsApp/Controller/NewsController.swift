@@ -16,6 +16,7 @@ class NewsController: UITableViewController {
         super.viewDidLoad()
         self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
         self.title = viewTitle
+        self.navigationController?.title = "test"
         loadData()
     }
 
@@ -25,7 +26,7 @@ class NewsController: UITableViewController {
     }
 
     func loadData() {
-        self.newsService.getArticles { [weak self] in
+        self.newsService.fetchArticles { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
