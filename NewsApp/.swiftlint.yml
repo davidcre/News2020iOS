@@ -4,4 +4,4 @@ line_length:
 excluded:
     - Pods
     - NewsApp/Model/Country.swift
-
+    - R.generated.swift
