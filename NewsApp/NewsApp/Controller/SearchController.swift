@@ -11,10 +11,24 @@ import UIKit
 
 class SearchController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet private weak var sortByLabel: UILabel!
+    @IBOutlet private weak var sortBySegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var dateFromLabel: UILabel!
+    @IBOutlet private weak var dateFromPicker: UIDatePicker!
+    @IBOutlet private weak var dateToLabel: UILabel!
+    @IBOutlet private weak var dateToPicker: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchController()
+    }
+    
+    @IBAction func onDateButtonClicked() {
+        dateFromLabel.isHidden = !dateFromLabel.isHidden
+        dateFromPicker.isHidden = !dateFromPicker.isHidden
+        dateToLabel.isHidden = !dateToLabel.isHidden
+        dateToPicker.isHidden = !dateToPicker.isHidden
     }
 
     func initSearchController() {
