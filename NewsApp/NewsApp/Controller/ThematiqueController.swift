@@ -19,6 +19,11 @@ class ThematiqueController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initThematiqueController()
+    }
+
+    func initThematiqueController() {
+        self.navigationItem.title = R.string.localizable.categories()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -29,7 +34,9 @@ class ThematiqueController: UITableViewController {
             guard let indexPath = sender as? IndexPath else {
                 return
             }
-            newsController.category = category[indexPath.row]
+            newsController.viewTitle = category[indexPath.row].title
+            let parametersRequest: ParametersRequest = ParametersRequest(category: category[indexPath.row], requestType: .topHeadlines)
+            newsController.newsService = NewsServiceImpl(parametersRequest: parametersRequest)
         }
     }
 }
