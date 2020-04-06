@@ -79,12 +79,8 @@
 		CD45C764242E3F7B00DA6519 /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
 		CD45C7662431E29700DA6519 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		CD45C7692431F75500DA6519 /* PreferencesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesService.swift; sourceTree = "<group>"; };
-		CD45C76C24332C8000DA6519 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		CD45C76D24332C8100DA6519 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CD45C77124332F1B00DA6519 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CD45C77324332F1D00DA6519 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CD45C7742433307F00DA6519 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		CD45C7752433307F00DA6519 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CD45C7762433307F00DA6519 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CD45C77824347F5800DA6519 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		CD45C77C2434D16A00DA6519 /* GetEverything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEverything.swift; sourceTree = "<group>"; };
@@ -665,8 +661,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CD7F1FE12421137E00B44A17 /* Base */,
-				CD45C76C24332C8000DA6519 /* fr */,
-				CD45C7742433307F00DA6519 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -675,8 +669,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CD7F1FE92421137F00B44A17 /* Base */,
-				CD45C76D24332C8100DA6519 /* fr */,
-				CD45C7752433307F00DA6519 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

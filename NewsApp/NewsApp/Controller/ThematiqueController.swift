@@ -19,6 +19,11 @@ class ThematiqueController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initThematiqueController()
+    }
+
+    func initThematiqueController() {
+        self.navigationItem.title = R.string.localizable.categories()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

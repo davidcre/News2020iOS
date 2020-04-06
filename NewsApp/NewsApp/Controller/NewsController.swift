@@ -14,9 +14,9 @@ class NewsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initNewsController()
         self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
         self.title = viewTitle
-        self.navigationController?.title = "test"
         loadData()
     }
 
@@ -31,6 +31,10 @@ class NewsController: UITableViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+
+    func initNewsController() {
+        self.navigationItem.title = R.string.localizable.topHeadlines()
     }
 }
 

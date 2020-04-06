@@ -12,16 +12,25 @@ import UIKit
 class ProfileController: UITableViewController {
     @IBOutlet private weak var countryButton: UIButton!
     @IBOutlet private weak var countryPicker: UIPickerView!
+    @IBOutlet private weak var developpedLabel: UILabel!
+    @IBOutlet private weak var countryLabel: UILabel!
     private var countrySelected: Country?
     private let preferencesService: PreferencesService = PreferencesServiceImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initProfileController()
         if let country = preferencesService.getCountry() {
             countryButton.setTitle(country.name, for: .normal)
             self.countrySelected = country
         }
         countryPicker.isHidden = true
+    }
+
+    func initProfileController() {
+        developpedLabel.text = R.string.localizable.developedByJosselinDuboc()
+        countryLabel.text = R.string.localizable.country()
+        self.navigationItem.title = R.string.localizable.myAccount()
     }
 
     @IBAction func onCountryClicked() {
@@ -44,6 +53,19 @@ extension ProfileController {
 extension ProfileController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionName: String
+        switch section {
+        case 0:
+            sectionName = R.string.localizable.preferences()
+        case 1:
+            sectionName = R.string.localizable.more()
+        default:
+            sectionName = ""
+        }
+        return sectionName
     }
 }
 

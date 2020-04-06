@@ -278,7 +278,9 @@
                     <navigationItem key="navigationItem" title="My Account" id="MsY-hm-m2Z"/>
                     <connections>
                         <outlet property="countryButton" destination="tsk-JJ-0bT" id="cEF-nL-KaL"/>
+                        <outlet property="countryLabel" destination="VvX-6z-22e" id="8IG-Hm-XK6"/>
                         <outlet property="countryPicker" destination="yxJ-00-JZg" id="fQj-mD-WQd"/>
+                        <outlet property="developpedLabel" destination="1lV-bU-SP6" id="2ft-wm-2ys"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96f-0n-uwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

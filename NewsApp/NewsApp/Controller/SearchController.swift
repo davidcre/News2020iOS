@@ -14,6 +14,12 @@ class SearchController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initSearchController()
+    }
+
+    func initSearchController() {
+        self.navigationItem.title = R.string.localizable.search()
+        self.searchBar.placeholder = R.string.localizable.searchForAnArticle()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
