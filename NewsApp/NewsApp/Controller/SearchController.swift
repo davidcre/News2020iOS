@@ -19,12 +19,17 @@ class SearchController: UIViewController {
     @IBOutlet private weak var dateToLabel: UILabel!
     @IBOutlet private weak var dateToPicker: UIDatePicker!
 
+    private let sortBy = [SortBy(title: R.string.localizable.publicationDate(), sortByType: .publishedAt),
+                          SortBy(title: R.string.localizable.popularity(), sortByType: .popularity),
+                          SortBy(title: R.string.localizable.relevancy(), sortByType: .relevancy)]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchController()
     }
-    
+
     @IBAction func onDateButtonClicked() {
+        //searchBar.frame.origin.y += 150
         dateFromLabel.isHidden = !dateFromLabel.isHidden
         dateFromPicker.isHidden = !dateFromPicker.isHidden
         dateToLabel.isHidden = !dateToLabel.isHidden
@@ -34,6 +39,11 @@ class SearchController: UIViewController {
     func initSearchController() {
         self.navigationItem.title = R.string.localizable.search()
         self.searchBar.placeholder = R.string.localizable.searchForAnArticle()
+        self.dateButton.setTitle(R.string.localizable.searchByDate(), for: .normal)
+        self.dateFromLabel.text = R.string.localizable.startDate()
+        self.dateToLabel.text = R.string.localizable.endDate()
+        self.sortByLabel.text = R.string.localizable.sortBy()
+        initSegmentedControl()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,5 +68,13 @@ extension SearchController: UISearchBarDelegate {
         }
         let parametersRequest: ParametersRequest = ParametersRequest(query: searchBar.text, requestType: .everything)
         performSegue(withIdentifier: R.segue.searchController.segueToNews, sender: parametersRequest)
+    }
+}
+
+extension SearchController {
+    func initSegmentedControl() {
+        for sortByIndice in 0..<self.sortBy.count {
+            self.sortBySegmentedControl.setTitle(self.sortBy[sortByIndice].title, forSegmentAt: sortByIndice)
+        }
     }
 }

@@ -8,6 +8,11 @@
 
 import Foundation
 
-enum SortBy: String, Codable {
+enum SortByType: String, Codable {
     case publishedAt, relevancy, popularity
+}
+
+struct SortBy {
+    let title: String
+    let sortByType: SortByType
 }

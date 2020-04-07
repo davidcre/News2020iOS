@@ -50,8 +50,8 @@ class NewsServiceImpl: NewsService {
     var query: String? {
         return parametersRequest.query
     }
-    var sortBy: SortBy? {
-        return parametersRequest.sortBy
+    var sortBy: SortByType? {
+        return parametersRequest.sortBy?.sortByType
     }
 
     func fetchArticles(completion: @escaping () -> Void) {
