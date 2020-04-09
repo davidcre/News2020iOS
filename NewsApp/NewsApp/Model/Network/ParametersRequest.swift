@@ -16,11 +16,11 @@ struct ParametersRequest {
     let category: Category?
 
     ///Everything
-    let language: Language?
-    let from: Date?
-    let to: Date?
-    let query: String?
-    let sortBy: SortBy?
+    var language: Language?
+    var from: Date?
+    var to: Date?
+    var query: String?
+    var sortBy: SortBy?
 
     ///General
     let requestType: RequestType

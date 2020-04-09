@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -142,6 +143,9 @@
                                                     <state key="normal" title="Button" image="magnifyingglass" catalog="system">
                                                         <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onSearchButtonClicked" destination="XbM-KB-F7i" eventType="touchUpInside" id="pTh-oJ-W4a"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19h-z8-H1E">
                                                     <rect key="frame" x="331" y="10" width="73" height="25"/>
@@ -313,11 +317,78 @@
                         <outlet property="sortByLabel" destination="Xu5-j1-o2Y" id="pYJ-9L-AI5"/>
                         <outlet property="sortBySegmentedControl" destination="fjU-Xn-YT2" id="MnA-fQ-cn2"/>
                         <segue destination="PFC-Tw-cy7" kind="show" identifier="segueToNews" id="tRZ-CC-bBr"/>
+                        <segue destination="dp8-sc-HE8" kind="show" identifier="segueToSearchDateFrom" id="X3P-2U-3vh"/>
+                        <segue destination="XaT-qc-3Nx" kind="show" identifier="segueToSearchLanguage" id="bQ3-ET-4aI"/>
+                        <segue destination="KS4-Vg-z7Q" kind="show" identifier="segueToSearchDateTo" id="h4c-nA-TBY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRY-tE-euF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2085.507246376812" y="600"/>
+        </scene>
+        <!--Search Date From Controller-->
+        <scene sceneID="kcq-Ug-K5O">
+            <objects>
+                <viewController id="dp8-sc-HE8" customClass="SearchDateFromController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d9D-X3-KbL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="e6x-FZ-T9A">
+                                <rect key="frame" x="0.0" y="597" width="414" height="216"/>
+                                <connections>
+                                    <action selector="datePickerChanged" destination="dp8-sc-HE8" eventType="valueChanged" id="R5K-kS-v2e"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="e6x-FZ-T9A" firstAttribute="trailing" secondItem="oXn-O1-f2L" secondAttribute="trailing" id="8Ag-9c-0bu"/>
+                            <constraint firstItem="e6x-FZ-T9A" firstAttribute="leading" secondItem="oXn-O1-f2L" secondAttribute="leading" id="NWj-7K-x8A"/>
+                            <constraint firstItem="e6x-FZ-T9A" firstAttribute="bottom" secondItem="oXn-O1-f2L" secondAttribute="bottom" id="ndl-TQ-vit"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oXn-O1-f2L"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Td2-sL-f5F"/>
+                    <connections>
+                        <outlet property="datePicker" destination="e6x-FZ-T9A" id="laM-K1-zOe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AXW-Rp-Jqn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3380" y="601"/>
+        </scene>
+        <!--Search Date To Controller-->
+        <scene sceneID="3H3-HQ-TtP">
+            <objects>
+                <viewController id="KS4-Vg-z7Q" customClass="SearchDateToController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qm7-nf-aWv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CG6-cI-PAQ">
+                                <rect key="frame" x="0.0" y="597" width="414" height="216"/>
+                                <connections>
+                                    <action selector="datePickerChanged" destination="KS4-Vg-z7Q" eventType="valueChanged" id="J5Z-f4-wWl"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CG6-cI-PAQ" firstAttribute="leading" secondItem="bdV-de-4K3" secondAttribute="leading" id="8Of-1z-FgQ"/>
+                            <constraint firstItem="CG6-cI-PAQ" firstAttribute="trailing" secondItem="bdV-de-4K3" secondAttribute="trailing" id="cBg-VN-ENd"/>
+                            <constraint firstItem="CG6-cI-PAQ" firstAttribute="bottom" secondItem="bdV-de-4K3" secondAttribute="bottom" id="eHb-AP-aZr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bdV-de-4K3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4Rw-OY-YO5"/>
+                    <connections>
+                        <outlet property="datePicker" destination="CG6-cI-PAQ" id="Lhe-4l-ODX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dif-Vi-KXy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3380" y="1312"/>
         </scene>
         <!--Categories-->
         <scene sceneID="6bS-cf-N3e">
@@ -392,6 +463,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cx-aF-csX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2085.507246376812" y="-82.366071428571431"/>
+        </scene>
+        <!--Search Language Controller-->
+        <scene sceneID="BBc-OE-rQj">
+            <objects>
+                <viewController id="XaT-qc-3Nx" customClass="SearchLanguageController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0pc-Vz-uEt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKU-br-EUW">
+                                <rect key="frame" x="0.0" y="597" width="414" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XaT-qc-3Nx" id="0vo-QZ-nW3"/>
+                                    <outlet property="delegate" destination="XaT-qc-3Nx" id="hsy-Rg-lEr"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EKU-br-EUW" firstAttribute="trailing" secondItem="qGM-LB-BHs" secondAttribute="trailing" id="0JL-79-hcQ"/>
+                            <constraint firstItem="EKU-br-EUW" firstAttribute="bottom" secondItem="qGM-LB-BHs" secondAttribute="bottom" id="WXm-l6-e7A"/>
+                            <constraint firstItem="EKU-br-EUW" firstAttribute="leading" secondItem="qGM-LB-BHs" secondAttribute="leading" id="hgl-AJ-QFu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qGM-LB-BHs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0wu-gj-qpd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIW-4p-ZTT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3381" y="-82"/>
         </scene>
         <!--Top Headlines-->
         <scene sceneID="K4W-XA-OAs">
