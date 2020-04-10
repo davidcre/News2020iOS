@@ -45,12 +45,8 @@ class SearchController: UITableViewController {
 
     @IBAction func onMoreFiltersButtonClicked() {
         showOrNotMoreFilters(show: !showMoreFilters)
-        switch showMoreFilters {
-        case true:
-            moreFiltersButton.setImage(UIImage(systemName: Constantes.SystemImage.chevronUp), for: .normal)
-        case false:
-            moreFiltersButton.setImage(UIImage(systemName: Constantes.SystemImage.chevronDown), for: .normal)
-        }
+        let image = showMoreFilters ? UIImage(systemName: Constantes.SystemImage.chevronUp) : UIImage(systemName: Constantes.SystemImage.chevronDown)
+        moreFiltersButton.setImage(image, for: .normal)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,27 +97,15 @@ extension SearchController {
     }
 
     func initSegmentedControl() {
-        for sortByIndice in 0..<self.sortBy.count {
-            self.sortBySegmentedControl.setTitle(self.sortBy[sortByIndice].title, forSegmentAt: sortByIndice)
+        for (index, element)  in self.sortBy.enumerated() {
+            self.sortBySegmentedControl.setTitle(element.title, forSegmentAt: index)
         }
     }
 
     func initFilters() {
-        if let dateFrom = self.parametersRequest.from {
-            self.dateFromLabelWithDate.text = dateFrom.formattedStringforDisplay
-        } else {
-            self.dateFromLabelWithDate.text = R.string.localizable.selectADate()
-        }
-        if let dateTo = self.parametersRequest.to {
-            self.dateToLabelWithDate.text = dateTo.formattedStringforDisplay
-        } else {
-            self.dateToLabelWithDate.text = R.string.localizable.selectADate()
-        }
-        if let language = self.parametersRequest.language {
-            self.languageLabelWithLanguage.text = language.name
-        } else {
-            self.languageLabelWithLanguage.text = R.string.localizable.selectALanguage()
-        }
+        self.dateFromLabelWithDate.text = self.parametersRequest.from?.formattedStringforDisplay ?? R.string.localizable.selectADate()
+        self.dateToLabelWithDate.text = self.parametersRequest.to?.formattedStringforDisplay ?? R.string.localizable.selectADate()
+        self.languageLabelWithLanguage.text = self.parametersRequest.language?.name ?? R.string.localizable.selectALanguage()
     }
 
     func showOrNotMoreFilters(show: Bool) {
@@ -138,7 +122,7 @@ extension SearchController: UISearchBarDelegate {
     }
 
     func search() {
-        guard searchBar.text != "" else {
+        guard let text = searchBar.text, !text.isEmpty  else {
             return
         }
         parametersRequest.query = searchBar.text

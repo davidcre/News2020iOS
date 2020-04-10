@@ -15,9 +15,7 @@ struct Alert {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (_: UIAlertAction) -> Void in
            vc.navigationController?.popViewController(animated: true)
         })
-        DispatchQueue.main.async {
-            vc.present(alert, animated: true, completion: nil)
-        }
+        vc.present(alert, animated: true, completion: nil)
     }
 
     static func showNoResultsAlert(on vc: UIViewController) {
