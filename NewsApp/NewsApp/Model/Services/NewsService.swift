@@ -41,17 +41,17 @@ class NewsServiceImpl: NewsService {
     var language: Language? {
         return parametersRequest.language
     }
-    var dateFrom: Date? {
-        return parametersRequest.from
+    var dateFrom: String? {
+        return parametersRequest.from?.formattedStringForRequest
     }
-    var dateTo: Date? {
-        return parametersRequest.to
+    var dateTo: String? {
+        return parametersRequest.to?.formattedStringForRequest
     }
     var query: String? {
         return parametersRequest.query
     }
-    var sortBy: SortBy? {
-        return parametersRequest.sortBy
+    var sortBy: SortByType? {
+        return parametersRequest.sortBy?.sortByType
     }
 
     func fetchArticles(completion: @escaping () -> Void) {

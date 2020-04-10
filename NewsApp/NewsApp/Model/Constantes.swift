@@ -20,4 +20,8 @@ struct Constantes {
     struct UserDefaultsKey {
         static let country = "Country"
     }
+    struct SystemImage {
+        static let chevronDown = "chevron.down"
+        static let chevronUp = "chevron.up"
+    }
 }

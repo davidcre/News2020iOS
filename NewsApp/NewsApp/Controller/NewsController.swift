@@ -29,6 +29,9 @@ class NewsController: UITableViewController {
         self.newsService.fetchArticles { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                if let articles = self?.newsService.newsArticles, articles.isEmpty {
+                    Alert.showNoResultsAlert(on: self!)
+                }
             }
         }
     }

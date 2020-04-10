@@ -17,18 +17,18 @@ struct GetEverything: APIRequest {
     }
 
     private let language: Language?
-    private let from: Date?
-    private let to: Date?
+    private let from: String?
+    private let to: String?
     private let q: String?
-    private let sortBy: SortBy?
+    private let sortBy: SortByType?
     private let apiKey = "2c64fe5d063645f58a5cd563308d0e7c"
 
     init(
         language: Language? = .fr,
-        from: Date? = nil,
-        to: Date? = nil,
+        from: String? = nil,
+        to: String? = nil,
         query: String?,
-        sortBy: SortBy? = nil) {
+        sortBy: SortByType? = nil) {
         self.language = language
         self.from = from
         self.to = to
