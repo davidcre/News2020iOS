@@ -47,9 +47,9 @@ class SearchController: UITableViewController {
         showOrNotMoreFilters(show: !showMoreFilters)
         switch showMoreFilters {
         case true:
-            moreFiltersButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            moreFiltersButton.setImage(UIImage(systemName: Constantes.SystemImage.chevronUp), for: .normal)
         case false:
-            moreFiltersButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            moreFiltersButton.setImage(UIImage(systemName: Constantes.SystemImage.chevronDown), for: .normal)
         }
     }
 
@@ -85,6 +85,7 @@ class SearchController: UITableViewController {
     }
 }
 
+///Initialisation du controleur
 extension SearchController {
     func initSearchController() {
         self.navigationItem.title = R.string.localizable.search()
@@ -107,12 +108,12 @@ extension SearchController {
 
     func initFilters() {
         if let dateFrom = self.parametersRequest.from {
-            self.dateFromLabelWithDate.text = dateFrom.formattedString
+            self.dateFromLabelWithDate.text = dateFrom.formattedStringforDisplay
         } else {
             self.dateFromLabelWithDate.text = R.string.localizable.selectADate()
         }
         if let dateTo = self.parametersRequest.to {
-            self.dateToLabelWithDate.text = dateTo.formattedString
+            self.dateToLabelWithDate.text = dateTo.formattedStringforDisplay
         } else {
             self.dateToLabelWithDate.text = R.string.localizable.selectADate()
         }
@@ -130,13 +131,23 @@ extension SearchController {
     }
 }
 
-//TODO: Un seul mot doit être tapé
+///Recherche
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search()
     }
+
+    func search() {
+        guard searchBar.text != "" else {
+            return
+        }
+        parametersRequest.query = searchBar.text
+        parametersRequest.sortBy = sortBy[sortBySegmentedControl.selectedSegmentIndex]
+        performSegue(withIdentifier: R.segue.searchController.segueToNews, sender: self.parametersRequest)
+    }
 }
 
+///Gestion de ta tableView
 extension SearchController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height: CGFloat
@@ -163,19 +174,7 @@ extension SearchController {
     }
 }
 
-extension SearchController {
-    func search() {
-        print("RECHERCHE")
-        print(self.parametersRequest)
-        guard searchBar.text != "" else {
-            return
-        }
-        parametersRequest.query = searchBar.text
-        parametersRequest.sortBy = sortBy[sortBySegmentedControl.selectedSegmentIndex]
-        performSegue(withIdentifier: R.segue.searchController.segueToNews, sender: self.parametersRequest)
-    }
-}
-
+///Implémentation du delegate pour les filtres optionnels
 extension SearchController: SearchService {
     func onDateFromChosen(dateFrom: Date) {
         self.parametersRequest.from = dateFrom

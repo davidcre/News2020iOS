@@ -21,7 +21,7 @@ extension SearchLanguageController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         Language.allCases[row].name
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         delegate?.onLanguageChosen(language: Language.allCases[row])
     }

@@ -41,11 +41,11 @@ class NewsServiceImpl: NewsService {
     var language: Language? {
         return parametersRequest.language
     }
-    var dateFrom: Date? {
-        return parametersRequest.from
+    var dateFrom: String? {
+        return parametersRequest.from?.formattedStringForRequest
     }
-    var dateTo: Date? {
-        return parametersRequest.to
+    var dateTo: String? {
+        return parametersRequest.to?.formattedStringForRequest
     }
     var query: String? {
         return parametersRequest.query
