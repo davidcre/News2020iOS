@@ -30,6 +30,9 @@ class NewsController: UITableViewController {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
+            if self?.newsService.newsArticles.count == 0 {
+                Alert.showNoResultsAlert(on: self!)
+            }
         }
     }
 
