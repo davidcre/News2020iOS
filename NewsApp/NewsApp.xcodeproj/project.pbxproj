@@ -32,6 +32,8 @@
 		CD45C79924409DB000DA6519 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD45C79824409DB000DA6519 /* Alert.swift */; };
 		CD472ACC24238A2F0013490C /* ThematiqueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD472ACB24238A2F0013490C /* ThematiqueCell.swift */; };
 		CD472AD82423C8310013490C /* UIImageView+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD472AD72423C8310013490C /* UIImageView+load.swift */; };
+		CD47E8F12445A38C00100DC3 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47E8F02445A38C00100DC3 /* DetailController.swift */; };
+		CD47E8F32445A42700100DC3 /* NewsDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47E8F22445A42700100DC3 /* NewsDetailCell.swift */; };
 		CD4A05CF242CA32600A75E76 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A05CE242CA32600A75E76 /* HomeController.swift */; };
 		CD4A05D1242CB01800A75E76 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A05D0242CB01800A75E76 /* ProfileController.swift */; };
 		CD60313B24278CDC005775CE /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60313A24278CDC005775CE /* APIRequest.swift */; };
@@ -104,6 +106,8 @@
 		CD45C79824409DB000DA6519 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CD472ACB24238A2F0013490C /* ThematiqueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThematiqueCell.swift; sourceTree = "<group>"; };
 		CD472AD72423C8310013490C /* UIImageView+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+load.swift"; sourceTree = "<group>"; };
+		CD47E8F02445A38C00100DC3 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		CD47E8F22445A42700100DC3 /* NewsDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailCell.swift; sourceTree = "<group>"; };
 		CD4A05CE242CA32600A75E76 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		CD4A05D0242CB01800A75E76 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		CD60313A24278CDC005775CE /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 				CD8A693E2422256700CD083D /* NewsCell.swift */,
 				CD472ACB24238A2F0013490C /* ThematiqueCell.swift */,
 				CD472AD72423C8310013490C /* UIImageView+load.swift */,
+				CD47E8F22445A42700100DC3 /* NewsDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				CD45C78A243F183D00DA6519 /* SearchDateFromController.swift */,
 				CD45C78C243F184E00DA6519 /* SearchLanguageController.swift */,
 				CD45C78E243F47DC00DA6519 /* SearchDateToController.swift */,
+				CD47E8F02445A38C00100DC3 /* DetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				CD45C765242E3F7B00DA6519 /* Constantes.swift in Sources */,
 				CD45C7812434D20E00DA6519 /* CaseIterable+Index.swift in Sources */,
 				CD45C77924347F5800DA6519 /* R.generated.swift in Sources */,
+				CD47E8F32445A42700100DC3 /* NewsDetailCell.swift in Sources */,
 				CD60313F24278E32005775CE /* Article.swift in Sources */,
 				CD60314D2428BB3E005775CE /* NewsError.swift in Sources */,
 				CD45C791243F64A000DA6519 /* SearchService.swift in Sources */,
@@ -632,6 +639,7 @@
 				CD7F1FDD2421137E00B44A17 /* SceneDelegate.swift in Sources */,
 				CD45C77F2434D1AE00DA6519 /* Language.swift in Sources */,
 				CD6031492428A7AF005775CE /* URLQueryItemEncoder.swift in Sources */,
+				CD47E8F12445A38C00100DC3 /* DetailController.swift in Sources */,
 				CD60313B24278CDC005775CE /* APIRequest.swift in Sources */,
 				CD8A693F2422256700CD083D /* NewsCell.swift in Sources */,
 				CD45C76A2431F75500DA6519 /* PreferencesService.swift in Sources */,

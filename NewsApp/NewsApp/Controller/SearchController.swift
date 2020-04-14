@@ -81,7 +81,7 @@ class SearchController: UITableViewController {
     }
 }
 
-///Initialisation du controleur
+// MARK: Initialisation du controleur
 extension SearchController {
     func initSearchController() {
         self.navigationItem.title = R.string.localizable.search()
@@ -115,7 +115,7 @@ extension SearchController {
     }
 }
 
-///Recherche
+// MARK: Recherche
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search()
@@ -131,7 +131,7 @@ extension SearchController: UISearchBarDelegate {
     }
 }
 
-///Gestion de ta tableView
+// MARK: Gestion de la table View
 extension SearchController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height: CGFloat
@@ -158,7 +158,7 @@ extension SearchController {
     }
 }
 
-///Implémentation du delegate pour les filtres optionnels
+// MARK: Implémentation du delegate pour les filtres optionnels
 extension SearchController: SearchService {
     func onDateFromChosen(dateFrom: Date) {
         self.parametersRequest.from = dateFrom
