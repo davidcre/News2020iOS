@@ -9,6 +9,7 @@
 import UIKit
 
 class NewsController: UITableViewController {
+    @IBOutlet private weak var profileButton: UIButton!
     var newsService: NewsService = NewsServiceImpl()
     var viewTitle: String?
 
@@ -18,6 +19,10 @@ class NewsController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
         self.title = viewTitle
         loadData()
+    }
+
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: R.segue.newsController.segueToProfile, sender: nil)
     }
 
     @objc func reloadDataTableView() {

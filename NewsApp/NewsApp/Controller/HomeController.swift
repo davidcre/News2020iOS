@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class HomeController: UITabBarController {
-    @IBOutlet private weak var profileButton: UIButton!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let items = self.tabBar.items else {
@@ -20,9 +18,5 @@ class HomeController: UITabBarController {
         items[0].title = R.string.localizable.topHeadlines()
         items[1].title = R.string.localizable.categories()
         items[2].title = R.string.localizable.search()
-    }
-
-    @IBAction func onProfileClicked() {
-        performSegue(withIdentifier: R.segue.homeController.segueToProfile, sender: nil)
     }
 }

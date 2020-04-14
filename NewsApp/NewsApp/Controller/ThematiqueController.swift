@@ -9,6 +9,8 @@
 import UIKit
 
 class ThematiqueController: UITableViewController {
+    @IBOutlet private weak var profileButton: UIButton!
+
     private let category = [Category(title: R.string.localizable.general(), type: .general),
                             Category(title: R.string.localizable.business(), type: .business),
                             Category(title: R.string.localizable.sports(), type: .sports),
@@ -20,6 +22,10 @@ class ThematiqueController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initThematiqueController()
+    }
+
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: R.segue.thematiqueController.segueToProfile, sender: nil)
     }
 
     func initThematiqueController() {
