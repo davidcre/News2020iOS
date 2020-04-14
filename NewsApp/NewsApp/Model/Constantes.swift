@@ -23,5 +23,12 @@ struct Constantes {
     struct SystemImage {
         static let chevronDown = "chevron.down"
         static let chevronUp = "chevron.up"
+        static let heart = "heart"
+        static let desktopComputer = "desktopcomputer"
+        static let sportsCourt = "sportscourt"
+        static let television = "tv"
+        static let dollarSign = "dollarsign.circle"
+        static let sum = "sum"
+        static let docRichText = "doc.richtext"
     }
 }
