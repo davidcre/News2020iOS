@@ -53,10 +53,7 @@ class NewsController: UITableViewController {
             guard let indexPath = sender as? IndexPath else {
                 return
             }
-            guard let article = newsService.newsArticles[indexPath.row] as? Article else {
-                return
-            }
-            detailController.article = article
+            detailController.article = newsService.newsArticles[indexPath.row]
         }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class SearchController: UITableViewController {
+    @IBOutlet private weak var profileButton: UIButton!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var sortByLabel: UILabel!
     @IBOutlet private weak var sortBySegmentedControl: UISegmentedControl!
@@ -37,6 +38,10 @@ class SearchController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         initFilters()
+    }
+
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: R.segue.searchController.segueToProfile, sender: nil)
     }
 
     @IBAction func onSearchButtonClicked() {
@@ -108,7 +113,7 @@ extension SearchController {
     func initFilters() {
         self.dateFromLabelWithDate.text = self.parametersRequest.from?.formattedStringforDisplay ?? R.string.localizable.selectADate()
         self.dateToLabelWithDate.text = self.parametersRequest.to?.formattedStringforDisplay ?? R.string.localizable.selectADate()
-        self.languageLabelWithLanguage.text = self.parametersRequest.language?.name ?? R.string.localizable.selectALanguage()
+        self.languageLabelWithLanguage.text = self.parametersRequest.language?.translation ?? R.string.localizable.selectALanguage()
     }
 
     func showOrNotMoreFilters(show: Bool) {

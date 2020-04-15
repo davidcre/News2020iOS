@@ -296,7 +296,18 @@
                             <outlet property="delegate" destination="XbM-KB-F7i" id="5tQ-Cn-imu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qqz-gr-pCS"/>
+                    <navigationItem key="navigationItem" id="qqz-gr-pCS">
+                        <barButtonItem key="rightBarButtonItem" id="JLa-Qp-MZv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WTN-1M-ZDp">
+                                <rect key="frame" x="320" y="11" width="74" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="person.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="onProfileClicked" destination="XbM-KB-F7i" eventType="touchUpInside" id="pa8-Lr-bS0"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateFromLabelWithDate" destination="mwd-lz-Djp" id="aSS-9U-Uoh"/>
                         <outlet property="dateFromLabelWithTitle" destination="9D0-A1-OPL" id="Ozh-Qe-eC1"/>
@@ -305,6 +316,7 @@
                         <outlet property="languageLabelWithLanguage" destination="6V9-JS-HhG" id="AP5-Or-Q51"/>
                         <outlet property="languageLabelWithTitle" destination="LAC-Zf-ojt" id="iYE-gX-EKz"/>
                         <outlet property="moreFiltersButton" destination="19h-z8-H1E" id="lL2-gR-aYa"/>
+                        <outlet property="profileButton" destination="WTN-1M-ZDp" id="hzE-YT-pue"/>
                         <outlet property="searchBar" destination="xmS-HY-dUU" id="eqc-tk-ZxV"/>
                         <outlet property="searchButton" destination="hrR-np-LZp" id="ykI-Cy-yWG"/>
                         <outlet property="sortByLabel" destination="Xu5-j1-o2Y" id="pYJ-9L-AI5"/>
@@ -313,6 +325,7 @@
                         <segue destination="dp8-sc-HE8" kind="show" identifier="segueToSearchDateFrom" id="X3P-2U-3vh"/>
                         <segue destination="XaT-qc-3Nx" kind="show" identifier="segueToSearchLanguage" id="bQ3-ET-4aI"/>
                         <segue destination="KS4-Vg-z7Q" kind="show" identifier="segueToSearchDateTo" id="h4c-nA-TBY"/>
+                        <segue destination="iNr-WX-xVJ" kind="show" identifier="segueToProfile" id="jzO-oK-aWF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRY-tE-euF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -619,22 +632,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsk-JJ-0bT">
-                                                    <rect key="frame" x="91.5" y="10" width="302.5" height="30"/>
-                                                    <state key="normal" title="Button"/>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsk-JJ-0bT">
+                                                    <rect key="frame" x="91.5" y="10" width="302.5" height="34"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="onCountryClicked" destination="QWK-Tw-KmC" eventType="touchUpInside" id="A4b-fV-Rbe"/>
                                                     </connections>
                                                 </button>
                                                 <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="yxJ-00-JZg">
-                                                    <rect key="frame" x="10" y="48" width="394" height="106"/>
+                                                    <rect key="frame" x="10" y="52" width="394" height="102"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="QWK-Tw-KmC" id="S6b-7k-3aX"/>
                                                         <outlet property="delegate" destination="QWK-Tw-KmC" id="8PZ-Lo-e2V"/>
                                                     </connections>
                                                 </pickerView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-6z-22e">
-                                                    <rect key="frame" x="20" y="10" width="61.5" height="38"/>
+                                                    <rect key="frame" x="20" y="10" width="61.5" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -961,7 +976,7 @@
         <image name="square.stack.3d.up.fill" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rx1-tN-LYB"/>
-        <segue reference="J8o-F1-eeS"/>
+        <segue reference="tRZ-CC-bBr"/>
+        <segue reference="jzO-oK-aWF"/>
     </inferredMetricsTieBreakers>
 </document>

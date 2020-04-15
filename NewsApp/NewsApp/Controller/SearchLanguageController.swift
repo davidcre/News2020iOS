@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FlagKit
 
 class SearchLanguageController: UIViewController {
     @IBOutlet private weak var languagePicker: UIPickerView!
@@ -34,7 +35,7 @@ class SearchLanguageController: UIViewController {
     }
 
     func initLanguageLabel() {
-        self.languageLabel.text = self.languageSelected?.name ?? R.string.localizable.selectALanguage()
+        self.languageLabel.text = self.languageSelected?.translation ?? R.string.localizable.selectALanguage()
     }
 
     @IBAction func onResetButtonClicked() {
@@ -47,7 +48,7 @@ class SearchLanguageController: UIViewController {
 
 extension SearchLanguageController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        Language.allCases[row].name
+        Language.allCases[row].translation
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
