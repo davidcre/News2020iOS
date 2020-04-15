@@ -65,16 +65,19 @@ class SearchController: UITableViewController {
             guard let searchDateFromController = segue.destination as? SearchDateFromController else {
                 return
             }
+            searchDateFromController.dateFromSelected = self.parametersRequest.from
             searchDateFromController.delegate = self
         } else if segue.identifier == R.segue.searchController.segueToSearchDateTo.identifier {
             guard let searchDateToController = segue.destination as? SearchDateToController else {
                 return
             }
+            searchDateToController.dateToSelected = self.parametersRequest.to
             searchDateToController.delegate = self
         } else if segue.identifier == R.segue.searchController.segueToSearchLanguage.identifier {
             guard let searchLanguageController = segue.destination as? SearchLanguageController else {
                 return
             }
+            searchLanguageController.languageSelected = self.parametersRequest.language
             searchLanguageController.delegate = self
         }
         searchBar.resignFirstResponder()
@@ -122,12 +125,25 @@ extension SearchController: UISearchBarDelegate {
     }
 
     func search() {
+        controlDate()
         guard let text = searchBar.text, !text.isEmpty  else {
             return
         }
         parametersRequest.query = searchBar.text
         parametersRequest.sortBy = sortBy[sortBySegmentedControl.selectedSegmentIndex]
         performSegue(withIdentifier: R.segue.searchController.segueToNews, sender: self.parametersRequest)
+    }
+
+    func controlDate() {
+        guard let dateTo = self.parametersRequest.to else {
+            return
+        }
+        guard let dateFrom = self.parametersRequest.from else {
+            return
+        }
+        if dateTo < dateFrom {
+            Alert.showErrorDate(on: self)
+        }
     }
 }
 
@@ -160,6 +176,7 @@ extension SearchController {
 
 // MARK: Implémentation du delegate pour les filtres optionnels
 extension SearchController: SearchService {
+
     func onDateFromChosen(dateFrom: Date) {
         self.parametersRequest.from = dateFrom
     }
@@ -170,5 +187,17 @@ extension SearchController: SearchService {
 
     func onLanguageChosen(language: Language) {
         self.parametersRequest.language = language
+    }
+
+    func resetDateFrom() {
+        self.parametersRequest.from = nil
+    }
+
+    func resetDateTo() {
+        self.parametersRequest.to = nil
+    }
+
+    func resetLanguage() {
+        self.parametersRequest.language = nil
     }
 }

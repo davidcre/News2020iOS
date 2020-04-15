@@ -10,10 +10,38 @@ import Foundation
 import UIKit
 
 class SearchLanguageController: UIViewController {
+    @IBOutlet private weak var languagePicker: UIPickerView!
+    @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var resetButton: UIButton!
+
     weak var delegate: SearchService?
+    var languageSelected: Language?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initLanguageController()
+    }
+
+    func initLanguageController() {
+        initLanguageLabel()
+        self.navigationItem.title = R.string.localizable.language()
+        guard let language = languageSelected else {
+            return
+        }
+        if let index = language.index {
+            languagePicker.selectRow(index, inComponent: 0, animated: false)
+        }
+    }
+
+    func initLanguageLabel() {
+        self.languageLabel.text = self.languageSelected?.name ?? R.string.localizable.selectALanguage()
+    }
+
+    @IBAction func onResetButtonClicked() {
+        languageSelected = nil
+        initLanguageLabel()
+        languagePicker.selectRow(0, inComponent: 0, animated: true)
+        delegate?.resetLanguage()
     }
 }
 
@@ -23,7 +51,11 @@ extension SearchLanguageController: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        delegate?.onLanguageChosen(language: Language.allCases[row])
+        languageSelected = Language.allCases[row]
+        if let language = languageSelected {
+            delegate?.onLanguageChosen(language: language)
+        }
+        initLanguageLabel()
     }
 }
 
