@@ -22,7 +22,7 @@ class ProfileController: UITableViewController {
         super.viewDidLoad()
         initProfileController()
         if let country = preferencesService.getCountry() {
-            countryButton.setTitle(country.name, for: .normal)
+            countryButton.setTitle(country.translation, for: .normal)
             initImageButton(country: country)
             self.countrySelected = country
         }
@@ -89,20 +89,20 @@ extension ProfileController: UIPickerViewDataSource {
 extension ProfileController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Country.allCases[row].name
+        return Country.allCases[row].translation
     }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let country = Country.allCases[row]
-        let flagCountryImage = flagService.imageFor(country: country)
-        return UIImageView(image: flagCountryImage)
+        let customView = PickerProfileElement(frame: CGRect(), for: country)
+        return customView
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         countrySelected = Country.allCases[row]
         saveCountry(countrySelected)
         if let country = countrySelected {
-            countryButton.setTitle(country.name, for: .normal)
+            countryButton.setTitle(country.translation, for: .normal)
             initImageButton(country: country)
         }
     }

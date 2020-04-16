@@ -298,7 +298,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="qqz-gr-pCS">
                         <barButtonItem key="rightBarButtonItem" id="JLa-Qp-MZv">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WTN-1M-ZDp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WTN-1M-ZDp">
                                 <rect key="frame" x="320" y="11" width="74" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="person.circle.fill" catalog="system"/>
@@ -517,7 +517,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="Q0P-yj-nP0">
                         <barButtonItem key="rightBarButtonItem" id="lu1-yt-qN5">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0al-oJ-wgY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0al-oJ-wgY">
                                 <rect key="frame" x="320" y="11" width="74" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="person.circle.fill" catalog="system"/>
@@ -823,7 +823,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Top Headlines" id="0US-6f-Vc6">
                         <barButtonItem key="rightBarButtonItem" id="mgL-nx-vOc">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cra-R1-CYl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cra-R1-CYl">
                                 <rect key="frame" x="320" y="11" width="74" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="person.circle.fill" catalog="system"/>
@@ -976,7 +976,7 @@
         <image name="square.stack.3d.up.fill" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8WM-V4-L2o"/>
+        <segue reference="tRZ-CC-bBr"/>
         <segue reference="jzO-oK-aWF"/>
     </inferredMetricsTieBreakers>
 </document>
