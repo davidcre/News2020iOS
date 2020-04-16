@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import FlagKit
 
 class ProfileController: UITableViewController {
     @IBOutlet private weak var countryButton: UIButton!
@@ -17,6 +16,7 @@ class ProfileController: UITableViewController {
     @IBOutlet private weak var countryLabel: UILabel!
     private var countrySelected: Country?
     private let preferencesService: PreferencesService = PreferencesServiceImpl()
+    private let flagService: FlagService = FlagServiceImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class ProfileController: UITableViewController {
     }
 
     func initImageButton(country: Country) {
-        let flagCountryImage = Flag(countryCode: country.name.uppercased())?.originalImage
+        let flagCountryImage = flagService.imageFor(country: country)
         countryButton.setImage(flagCountryImage, for: .normal)
     }
 
@@ -87,14 +87,14 @@ extension ProfileController: UIPickerViewDataSource {
 }
 
 extension ProfileController: UIPickerViewDelegate {
-//    Pour utiliser sans FlagKit, décommenter cette fonction et supprimer func pickerView(viewForRow)
 
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return Country.allCases[row].name
-//    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Country.allCases[row].name
+    }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let flagCountryImage = Flag(countryCode: Country.allCases[row].name.uppercased())?.originalImage
+        let country = Country.allCases[row]
+        let flagCountryImage = flagService.imageFor(country: country)
         return UIImageView(image: flagCountryImage)
     }
 

@@ -31,4 +31,9 @@ struct Constantes {
         static let sum = "sum"
         static let docRichText = "doc.richtext"
     }
+    struct TabBarItemTitle {
+        static let topHeadlines = "Top Headlines"
+        static let search = "Search"
+        static let categories = "Categories"
+    }
 }

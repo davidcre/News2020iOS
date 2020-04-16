@@ -26,10 +26,7 @@ class SearchLanguageController: UIViewController {
     func initLanguageController() {
         initLanguageLabel()
         self.navigationItem.title = R.string.localizable.language()
-        guard let language = languageSelected else {
-            return
-        }
-        if let index = language.index {
+        if let language = languageSelected, let index = language.index {
             languagePicker.selectRow(index, inComponent: 0, animated: false)
         }
     }

@@ -34,6 +34,7 @@
 		CD472AD82423C8310013490C /* UIImageView+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD472AD72423C8310013490C /* UIImageView+load.swift */; };
 		CD47E8F12445A38C00100DC3 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47E8F02445A38C00100DC3 /* DetailController.swift */; };
 		CD47E8F32445A42700100DC3 /* NewsDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47E8F22445A42700100DC3 /* NewsDetailCell.swift */; };
+		CD47E8F5244844F600100DC3 /* FlagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47E8F4244844F600100DC3 /* FlagService.swift */; };
 		CD4A05CF242CA32600A75E76 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A05CE242CA32600A75E76 /* HomeController.swift */; };
 		CD4A05D1242CB01800A75E76 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A05D0242CB01800A75E76 /* ProfileController.swift */; };
 		CD60313B24278CDC005775CE /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60313A24278CDC005775CE /* APIRequest.swift */; };
@@ -108,6 +109,7 @@
 		CD472AD72423C8310013490C /* UIImageView+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+load.swift"; sourceTree = "<group>"; };
 		CD47E8F02445A38C00100DC3 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		CD47E8F22445A42700100DC3 /* NewsDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailCell.swift; sourceTree = "<group>"; };
+		CD47E8F4244844F600100DC3 /* FlagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagService.swift; sourceTree = "<group>"; };
 		CD4A05CE242CA32600A75E76 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		CD4A05D0242CB01800A75E76 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		CD60313A24278CDC005775CE /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				CD45C7662431E29700DA6519 /* NewsService.swift */,
 				CD45C7692431F75500DA6519 /* PreferencesService.swift */,
 				CD45C790243F64A000DA6519 /* SearchService.swift */,
+				CD47E8F4244844F600100DC3 /* FlagService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				CD45C7812434D20E00DA6519 /* CaseIterable+Index.swift in Sources */,
 				CD45C77924347F5800DA6519 /* R.generated.swift in Sources */,
 				CD47E8F32445A42700100DC3 /* NewsDetailCell.swift in Sources */,
+				CD47E8F5244844F600100DC3 /* FlagService.swift in Sources */,
 				CD60313F24278E32005775CE /* Article.swift in Sources */,
 				CD60314D2428BB3E005775CE /* NewsError.swift in Sources */,
 				CD45C791243F64A000DA6519 /* SearchService.swift in Sources */,

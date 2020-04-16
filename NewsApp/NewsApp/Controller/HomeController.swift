@@ -12,11 +12,20 @@ import UIKit
 class HomeController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let items = self.tabBar.items else {
+        guard let tabBarItems = self.tabBar.items else {
             return
         }
-        items[0].title = R.string.localizable.topHeadlines()
-        items[1].title = R.string.localizable.categories()
-        items[2].title = R.string.localizable.search()
+        for tabBarItem in tabBarItems {
+            switch tabBarItem.title {
+            case Constantes.TabBarItemTitle.categories:
+                tabBarItem.title = R.string.localizable.categories()
+            case Constantes.TabBarItemTitle.topHeadlines:
+                tabBarItem.title = R.string.localizable.topHeadlines()
+            case Constantes.TabBarItemTitle.search:
+                tabBarItem.title = R.string.localizable.search()
+            default:
+                return
+            }
+        }
     }
 }
