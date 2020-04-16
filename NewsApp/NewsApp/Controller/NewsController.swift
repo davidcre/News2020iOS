@@ -9,6 +9,7 @@
 import UIKit
 
 class NewsController: UITableViewController {
+    @IBOutlet private weak var profileButton: UIButton!
     var newsService: NewsService = NewsServiceImpl()
     var viewTitle: String?
 
@@ -18,6 +19,10 @@ class NewsController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(reloadDataTableView), for: .valueChanged)
         self.title = viewTitle
         loadData()
+    }
+
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: R.segue.newsController.segueToProfile, sender: nil)
     }
 
     @objc func reloadDataTableView() {
@@ -39,6 +44,18 @@ class NewsController: UITableViewController {
     func initNewsController() {
         self.navigationItem.title = R.string.localizable.topHeadlines()
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.newsController.segueToDetail.identifier {
+            guard let detailController = segue.destination as? DetailController else {
+                return
+            }
+            guard let indexPath = sender as? IndexPath else {
+                return
+            }
+            detailController.article = newsService.newsArticles[indexPath.row]
+        }
+    }
 }
 
 extension NewsController {
@@ -58,5 +75,6 @@ extension NewsController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: R.segue.newsController.segueToDetail, sender: indexPath)
     }
 }

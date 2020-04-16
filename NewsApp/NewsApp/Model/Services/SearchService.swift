@@ -12,4 +12,7 @@ protocol SearchService: AnyObject {
     func onDateFromChosen(dateFrom: Date)
     func onDateToChosen(dateTo: Date)
     func onLanguageChosen(language: Language)
+    func resetDateFrom()
+    func resetDateTo()
+    func resetLanguage()
 }

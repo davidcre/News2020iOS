@@ -9,17 +9,23 @@
 import UIKit
 
 class ThematiqueController: UITableViewController {
-    private let category = [Category(title: R.string.localizable.general(), type: .general),
-                            Category(title: R.string.localizable.business(), type: .business),
-                            Category(title: R.string.localizable.sports(), type: .sports),
-                            Category(title: R.string.localizable.health(), type: .health),
-                            Category(title: R.string.localizable.science(), type: .science),
-                            Category(title: R.string.localizable.technology(), type: .technology),
-                            Category(title: R.string.localizable.entertainment(), type: .entertainment)]
+    @IBOutlet private weak var profileButton: UIButton!
+
+    private let category = [Category(title: R.string.localizable.general(), image: Constantes.SystemImage.docRichText, type: .general),
+                            Category(title: R.string.localizable.business(), image: Constantes.SystemImage.dollarSign, type: .business),
+                            Category(title: R.string.localizable.sports(), image: Constantes.SystemImage.sportsCourt, type: .sports),
+                            Category(title: R.string.localizable.technology(), image: Constantes.SystemImage.desktopComputer, type: .technology),
+                            Category(title: R.string.localizable.health(), image: Constantes.SystemImage.heart, type: .health),
+                            Category(title: R.string.localizable.science(), image: Constantes.SystemImage.sum, type: .science),
+                            Category(title: R.string.localizable.entertainment(), image: Constantes.SystemImage.television, type: .entertainment)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initThematiqueController()
+    }
+
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: R.segue.thematiqueController.segueToProfile, sender: nil)
     }
 
     func initThematiqueController() {

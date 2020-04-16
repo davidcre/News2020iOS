@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class SearchController: UITableViewController {
+    @IBOutlet private weak var profileButton: UIButton!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var sortByLabel: UILabel!
     @IBOutlet private weak var sortBySegmentedControl: UISegmentedControl!
@@ -39,6 +40,10 @@ class SearchController: UITableViewController {
         initFilters()
     }
 
+    @IBAction func onProfileClicked() {
+        performSegue(withIdentifier: R.segue.searchController.segueToProfile, sender: nil)
+    }
+
     @IBAction func onSearchButtonClicked() {
         search()
     }
@@ -50,38 +55,28 @@ class SearchController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         guard let parametersRequest = sender as? ParametersRequest else {
             return
         }
 
-        if segue.identifier == R.segue.searchController.segueToNews.identifier {
-            guard let newsController = segue.destination as? NewsController else {
-                return
-            }
+        if let newsController = segue.destination as? NewsController {
             newsController.viewTitle = parametersRequest.query
             newsController.newsService = NewsServiceImpl(parametersRequest: parametersRequest)
-        } else if segue.identifier == R.segue.searchController.segueToSearchDateFrom.identifier {
-            guard let searchDateFromController = segue.destination as? SearchDateFromController else {
-                return
-            }
+        } else if let searchDateFromController = segue.destination as? SearchDateFromController {
+            searchDateFromController.dateFromSelected = self.parametersRequest.from
             searchDateFromController.delegate = self
-        } else if segue.identifier == R.segue.searchController.segueToSearchDateTo.identifier {
-            guard let searchDateToController = segue.destination as? SearchDateToController else {
-                return
-            }
+        } else if let searchDateToController = segue.destination as? SearchDateToController {
+            searchDateToController.dateToSelected = self.parametersRequest.to
             searchDateToController.delegate = self
-        } else if segue.identifier == R.segue.searchController.segueToSearchLanguage.identifier {
-            guard let searchLanguageController = segue.destination as? SearchLanguageController else {
-                return
-            }
+        } else if let searchLanguageController = segue.destination as? SearchLanguageController {
+            searchLanguageController.languageSelected = self.parametersRequest.language
             searchLanguageController.delegate = self
         }
         searchBar.resignFirstResponder()
     }
 }
 
-///Initialisation du controleur
+// MARK: Initialisation du controleur
 extension SearchController {
     func initSearchController() {
         self.navigationItem.title = R.string.localizable.search()
@@ -105,7 +100,7 @@ extension SearchController {
     func initFilters() {
         self.dateFromLabelWithDate.text = self.parametersRequest.from?.formattedStringforDisplay ?? R.string.localizable.selectADate()
         self.dateToLabelWithDate.text = self.parametersRequest.to?.formattedStringforDisplay ?? R.string.localizable.selectADate()
-        self.languageLabelWithLanguage.text = self.parametersRequest.language?.name ?? R.string.localizable.selectALanguage()
+        self.languageLabelWithLanguage.text = self.parametersRequest.language?.translation ?? R.string.localizable.selectALanguage()
     }
 
     func showOrNotMoreFilters(show: Bool) {
@@ -115,13 +110,14 @@ extension SearchController {
     }
 }
 
-///Recherche
+// MARK: Recherche
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search()
     }
 
     func search() {
+        controlDate()
         guard let text = searchBar.text, !text.isEmpty  else {
             return
         }
@@ -129,9 +125,21 @@ extension SearchController: UISearchBarDelegate {
         parametersRequest.sortBy = sortBy[sortBySegmentedControl.selectedSegmentIndex]
         performSegue(withIdentifier: R.segue.searchController.segueToNews, sender: self.parametersRequest)
     }
+
+    func controlDate() {
+        guard let dateTo = self.parametersRequest.to else {
+            return
+        }
+        guard let dateFrom = self.parametersRequest.from else {
+            return
+        }
+        if dateTo < dateFrom {
+            Alert.showErrorDate(on: self)
+        }
+    }
 }
 
-///Gestion de ta tableView
+// MARK: Gestion de la table View
 extension SearchController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height: CGFloat
@@ -158,8 +166,9 @@ extension SearchController {
     }
 }
 
-///Implémentation du delegate pour les filtres optionnels
+// MARK: Implémentation du delegate pour les filtres optionnels
 extension SearchController: SearchService {
+
     func onDateFromChosen(dateFrom: Date) {
         self.parametersRequest.from = dateFrom
     }
@@ -170,5 +179,17 @@ extension SearchController: SearchService {
 
     func onLanguageChosen(language: Language) {
         self.parametersRequest.language = language
+    }
+
+    func resetDateFrom() {
+        self.parametersRequest.from = nil
+    }
+
+    func resetDateTo() {
+        self.parametersRequest.to = nil
+    }
+
+    func resetLanguage() {
+        self.parametersRequest.language = nil
     }
 }

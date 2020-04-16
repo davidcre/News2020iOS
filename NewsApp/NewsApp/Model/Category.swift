@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CategoryType: String, Codable, CaseIterable {
     case business, sports, health, science, entertainment, technology, general
@@ -14,5 +15,6 @@ enum CategoryType: String, Codable, CaseIterable {
 
 struct Category {
     let title: String
+    let image: String?
     let type: CategoryType
 }

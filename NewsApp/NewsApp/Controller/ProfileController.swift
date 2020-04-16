@@ -16,12 +16,14 @@ class ProfileController: UITableViewController {
     @IBOutlet private weak var countryLabel: UILabel!
     private var countrySelected: Country?
     private let preferencesService: PreferencesService = PreferencesServiceImpl()
+    private let flagService: FlagService = FlagServiceImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initProfileController()
         if let country = preferencesService.getCountry() {
             countryButton.setTitle(country.name, for: .normal)
+            initImageButton(country: country)
             self.countrySelected = country
         }
         countryPicker.isHidden = true
@@ -31,6 +33,11 @@ class ProfileController: UITableViewController {
         developpedLabel.text = R.string.localizable.developedByJosselinDuboc()
         countryLabel.text = R.string.localizable.country()
         self.navigationItem.title = R.string.localizable.myAccount()
+    }
+
+    func initImageButton(country: Country) {
+        let flagCountryImage = flagService.imageFor(country: country)
+        countryButton.setImage(flagCountryImage, for: .normal)
     }
 
     @IBAction func onCountryClicked() {
@@ -80,13 +87,23 @@ extension ProfileController: UIPickerViewDataSource {
 }
 
 extension ProfileController: UIPickerViewDelegate {
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Country.allCases[row].name
     }
 
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let country = Country.allCases[row]
+        let flagCountryImage = flagService.imageFor(country: country)
+        return UIImageView(image: flagCountryImage)
+    }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryButton.setTitle(Country.allCases[row].name, for: .normal)
         countrySelected = Country.allCases[row]
         saveCountry(countrySelected)
+        if let country = countrySelected {
+            countryButton.setTitle(country.name, for: .normal)
+            initImageButton(country: country)
+        }
     }
 }

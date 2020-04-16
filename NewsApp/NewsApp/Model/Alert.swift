@@ -19,6 +19,10 @@ struct Alert {
     }
 
     static func showNoResultsAlert(on vc: UIViewController) {
-        showAlert(on: vc, with: R.string.localizable.noResultsFound(), message: "")
+        showAlert(on: vc, with: R.string.localizable.noResultsFound(), message: R.string.localizable.pleaseBroadenYourSearch())
+    }
+
+    static func showErrorDate(on vc: UIViewController) {
+        showAlert(on: vc, with: R.string.localizable.error(), message: R.string.localizable.theStartDateMustBeBeforeTheEndDate())
     }
 }

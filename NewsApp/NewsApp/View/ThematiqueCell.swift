@@ -13,5 +13,8 @@ class ThematiqueCell: UITableViewCell {
 
     func configure(category: Category) {
         self.thematique.text = category.title
+        if let systemImage = category.image {
+            imageThematique.image = UIImage(systemName: systemImage)
+        }
     }
 }

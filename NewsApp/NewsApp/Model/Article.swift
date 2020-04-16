@@ -35,7 +35,7 @@ struct Article: Codable {
 
     enum CodingKeys: String, CodingKey {
         case source, author, title
-        case articleDescription
+        case articleDescription = "description"
         case webURLString = "url", imageURLString = "urlToImage", publishedAt, content
     }
 }
