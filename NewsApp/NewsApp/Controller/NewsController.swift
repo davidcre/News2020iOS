@@ -12,6 +12,7 @@ class NewsController: UITableViewController {
     @IBOutlet private weak var profileButton: UIButton!
     var newsService: NewsService = NewsServiceImpl()
     var viewTitle: String?
+    private var allowToLoadMore = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,22 @@ class NewsController: UITableViewController {
         self.newsService.fetchArticles { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.allowToLoadMore = true
                 if let articles = self?.newsService.newsArticles, articles.isEmpty {
                     Alert.showNoResultsAlert(on: self!)
                 }
             }
+        }
+    }
+
+    func loadMore() {
+        print(allowToLoadMore)
+        print(self.newsService.totalResults)
+        print(self.newsService.parametersRequest.pageSize)
+        if allowToLoadMore && min(self.newsService.maxPageSize, self.newsService.totalResults) != self.newsService.parametersRequest.pageSize {
+            self.allowToLoadMore = false
+            self.newsService.loadMore()
+            reloadDataTableView()
         }
     }
 
@@ -76,5 +89,11 @@ extension NewsController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: R.segue.newsController.segueToDetail, sender: indexPath)
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == newsService.newsArticles.count - 1 {
+            loadMore()
+           }
     }
 }

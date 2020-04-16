@@ -20,6 +20,7 @@ struct GetEverything: APIRequest {
     private let from: String?
     private let to: String?
     private let q: String?
+    private let pageSize: Int?
     private let sortBy: SortByType?
     private let apiKey = "2c64fe5d063645f58a5cd563308d0e7c"
 
@@ -28,11 +29,13 @@ struct GetEverything: APIRequest {
         from: String? = nil,
         to: String? = nil,
         query: String?,
+        pageSize: Int?,
         sortBy: SortByType? = nil) {
         self.language = language
         self.from = from
         self.to = to
         self.q = query
+        self.pageSize = pageSize
         self.sortBy = sortBy
     }
 }
