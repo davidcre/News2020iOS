@@ -55,33 +55,20 @@ class SearchController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         guard let parametersRequest = sender as? ParametersRequest else {
             return
         }
 
-        if segue.identifier == R.segue.searchController.segueToNews.identifier {
-            guard let newsController = segue.destination as? NewsController else {
-                return
-            }
+        if let newsController = segue.destination as? NewsController {
             newsController.viewTitle = parametersRequest.query
             newsController.newsService = NewsServiceImpl(parametersRequest: parametersRequest)
-        } else if segue.identifier == R.segue.searchController.segueToSearchDateFrom.identifier {
-            guard let searchDateFromController = segue.destination as? SearchDateFromController else {
-                return
-            }
+        } else if let searchDateFromController = segue.destination as? SearchDateFromController {
             searchDateFromController.dateFromSelected = self.parametersRequest.from
             searchDateFromController.delegate = self
-        } else if segue.identifier == R.segue.searchController.segueToSearchDateTo.identifier {
-            guard let searchDateToController = segue.destination as? SearchDateToController else {
-                return
-            }
+        } else if let searchDateToController = segue.destination as? SearchDateToController {
             searchDateToController.dateToSelected = self.parametersRequest.to
             searchDateToController.delegate = self
-        } else if segue.identifier == R.segue.searchController.segueToSearchLanguage.identifier {
-            guard let searchLanguageController = segue.destination as? SearchLanguageController else {
-                return
-            }
+        } else if let searchLanguageController = segue.destination as? SearchLanguageController {
             searchLanguageController.languageSelected = self.parametersRequest.language
             searchLanguageController.delegate = self
         }
