@@ -15,6 +15,9 @@ class ProfileController: UITableViewController {
     @IBOutlet private weak var developpedLabel: UILabel!
     @IBOutlet private weak var countryLabel: UILabel!
     private var countrySelected: Country?
+    private let countries = Country.allCases.sorted {
+        $0.translation < $1.translation
+    }
     private let preferencesService: PreferencesService = PreferencesServiceImpl()
     private let flagService: FlagService = FlagServiceImpl()
 
@@ -41,7 +44,7 @@ class ProfileController: UITableViewController {
     }
 
     @IBAction func onCountryClicked() {
-        if let index = countrySelected!.index {
+        if let country = countrySelected, let index = countries.firstIndex(of: country) {
             countryPicker.selectRow(index, inComponent: 0, animated: false)
         }
         countryPicker.isHidden = false
@@ -82,24 +85,24 @@ extension ProfileController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Country.allCases.count
+        return countries.count
     }
 }
 
 extension ProfileController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Country.allCases[row].translation
+        return countries[row].translation
     }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let country = Country.allCases[row]
+        let country = countries[row]
         let customView = PickerProfileElement(frame: CGRect(), for: country)
         return customView
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countrySelected = Country.allCases[row]
+        countrySelected = countries[row]
         saveCountry(countrySelected)
         if let country = countrySelected {
             countryButton.setTitle(country.translation, for: .normal)

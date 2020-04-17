@@ -17,6 +17,9 @@ class SearchLanguageController: UIViewController {
 
     weak var delegate: SearchService?
     var languageSelected: Language?
+    private let languages = Language.allCases.sorted {
+        $0.translation < $1.translation
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class SearchLanguageController: UIViewController {
     func initLanguageController() {
         initLanguageLabel()
         self.navigationItem.title = R.string.localizable.language()
-        if let language = languageSelected, let index = language.index {
+        if let language = languageSelected, let index = languages.firstIndex(of: language) {
             languagePicker.selectRow(index, inComponent: 0, animated: false)
         }
     }
@@ -45,11 +48,11 @@ class SearchLanguageController: UIViewController {
 
 extension SearchLanguageController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        Language.allCases[row].translation
+        languages[row].translation
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        languageSelected = Language.allCases[row]
+        languageSelected = languages[row]
         if let language = languageSelected {
             delegate?.onLanguageChosen(language: language)
         }
@@ -63,6 +66,6 @@ extension SearchLanguageController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Language.allCases.count
+        return languages.count
     }
 }
