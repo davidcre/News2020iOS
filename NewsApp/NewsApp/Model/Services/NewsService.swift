@@ -10,7 +10,7 @@ import Foundation
 
 protocol NewsService {
     var newsArticles: [Article] { get }
-    var parametersRequest: ParametersRequest { get set }
+    var parametersRequest: ParametersRequest { get }
     func fetchArticles(completion: @escaping () -> Void)
     func loadMore()
     var allowToLoadMore: Bool { get set }
