@@ -816,6 +816,7 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="PFC-Tw-cy7" id="Lmy-kj-OGT"/>
                             <outlet property="delegate" destination="PFC-Tw-cy7" id="Ybe-pZ-v9D"/>
@@ -846,7 +847,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1H-dA-ecS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2086" y="-849"/>
+            <point key="canvasLocation" x="2085.507246376812" y="-849.10714285714278"/>
         </scene>
         <!--Detail Controller-->
         <scene sceneID="ySy-lK-hqB">

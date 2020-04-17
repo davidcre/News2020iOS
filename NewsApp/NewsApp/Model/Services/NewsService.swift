@@ -13,8 +13,7 @@ protocol NewsService {
     var parametersRequest: ParametersRequest { get set }
     func fetchArticles(completion: @escaping () -> Void)
     func loadMore()
-    var totalResults: Int { get }
-    var maxPageSize: Int { get }
+    var allowToLoadMore: Bool { get set }
 }
 
 class NewsServiceImpl: NewsService {
@@ -23,6 +22,7 @@ class NewsServiceImpl: NewsService {
     var totalResults: Int = 0
     var parametersRequest: ParametersRequest
     let apiClient = APIClient()
+    var allowToLoadMore = true
 
     ///Initializers
     init(parametersRequest: ParametersRequest) {
@@ -63,11 +63,21 @@ class NewsServiceImpl: NewsService {
     }
 
     func loadMore() {
-        let actualPageSize = self.parametersRequest.pageSize
-        self.parametersRequest.pageSize = min(maxPageSize, min(actualPageSize + 20, totalResults ))
+        if allowToLoadMore {
+            guard min(maxPageSize, totalResults) != parametersRequest.pageSize else {
+                allowToLoadMore = false
+                return
+            }
+            let actualPageSize = parametersRequest.pageSize
+            self.parametersRequest.pageSize = min(maxPageSize, min(actualPageSize + 20, totalResults ))
+        }
     }
 
     func fetchArticles(completion: @escaping () -> Void) {
+        guard allowToLoadMore else {
+            return
+        }
+        allowToLoadMore = false
         switch requestType {
         case .topHeadlines:
             fetchTopHeadlines {

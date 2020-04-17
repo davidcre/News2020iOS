@@ -12,7 +12,6 @@ class NewsController: UITableViewController {
     @IBOutlet private weak var profileButton: UIButton!
     var newsService: NewsService = NewsServiceImpl()
     var viewTitle: String?
-    private var allowToLoadMore = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class NewsController: UITableViewController {
         self.newsService.fetchArticles { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
-                self?.allowToLoadMore = true
+                self?.newsService.allowToLoadMore = true
                 if let articles = self?.newsService.newsArticles, articles.isEmpty {
                     Alert.showNoResultsAlert(on: self!)
                 }
@@ -44,14 +43,8 @@ class NewsController: UITableViewController {
     }
 
     func loadMore() {
-        print(allowToLoadMore)
-        print(self.newsService.totalResults)
-        print(self.newsService.parametersRequest.pageSize)
-        if allowToLoadMore && min(self.newsService.maxPageSize, self.newsService.totalResults) != self.newsService.parametersRequest.pageSize {
-            self.allowToLoadMore = false
-            self.newsService.loadMore()
-            reloadDataTableView()
-        }
+        self.newsService.loadMore()
+        loadData()
     }
 
     func initNewsController() {
