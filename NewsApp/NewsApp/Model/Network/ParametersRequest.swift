@@ -23,6 +23,7 @@ struct ParametersRequest {
     var sortBy: SortBy?
 
     ///General
+    var pageSize: Int
     let requestType: RequestType
 
     init(category: Category? = nil,
@@ -31,6 +32,7 @@ struct ParametersRequest {
          to: Date? = nil,
          query: String? = nil,
          sortBy: SortBy? = nil,
+         pageSize: Int = 20,
          requestType: RequestType) {
         self.category = category
         self.language = language
@@ -38,6 +40,7 @@ struct ParametersRequest {
         self.to = to
         self.query = query
         self.sortBy = sortBy
+        self.pageSize = pageSize
         self.requestType = requestType
     }
 }

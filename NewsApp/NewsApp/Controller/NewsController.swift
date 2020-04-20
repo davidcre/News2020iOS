@@ -41,6 +41,11 @@ class NewsController: UITableViewController {
         }
     }
 
+    func loadMore() {
+        self.newsService.loadMore()
+        loadData()
+    }
+
     func initNewsController() {
         self.navigationItem.title = R.string.localizable.topHeadlines()
     }
@@ -76,5 +81,11 @@ extension NewsController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: R.segue.newsController.segueToDetail, sender: indexPath)
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == newsService.newsArticles.count - 1 {
+            loadMore()
+           }
     }
 }
