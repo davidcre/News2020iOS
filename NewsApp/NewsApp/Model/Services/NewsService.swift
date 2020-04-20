@@ -13,16 +13,16 @@ protocol NewsService {
     var parametersRequest: ParametersRequest { get }
     func fetchArticles(completion: @escaping () -> Void)
     func loadMore()
-    var allowToLoadMore: Bool { get set }
 }
 
 class NewsServiceImpl: NewsService {
-    var maxPageSize = 100
     var newsArticles: [Article] = []
-    var totalResults: Int = 0
     var parametersRequest: ParametersRequest
-    let apiClient = APIClient()
-    var allowToLoadMore = true
+
+    private let apiClient = APIClient()
+    private let  maxPageSize = 100
+    private var totalResults: Int = 0
+    private var allowToLoadMore = true
 
     ///Initializers
     init(parametersRequest: ParametersRequest) {
@@ -82,10 +82,12 @@ class NewsServiceImpl: NewsService {
         case .topHeadlines:
             fetchTopHeadlines {
                 completion()
+                self.allowToLoadMore = true
             }
         case .everything:
             fetchEverything {
                 completion()
+                self.allowToLoadMore = true
             }
         }
     }
